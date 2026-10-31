@@ -172,7 +172,7 @@
     <section class="paper-sheet" role="dialog" aria-modal="true" aria-labelledby="letterTitle" tabindex="-1" id="paperSheet">
       <button class="close-letter" id="closeLetter" type="button" aria-label="Đóng lá thư">×</button>
       <div class="paper-lines">
-        <h2 id="letterTitle">Minu à,</h2>
+        <h2 id="letterTitle">Chúc mừng sinh nhật MiNu</h2>
         <p>Hôm nay là sinh nhật của MiNu. Dù không gặp nhau trong khoảng thời gian lâu, nhưng ngày này vẫn luôn là một khoảng ký ức nhẹ nhàng, đủ để Chính dừng lại một chút và gửi đến Minu một lời chúc thật lòng nhất.</p>
         <p>Thời gian trôi qua, Chính mong những tổn thương hay nuối tiếc của ngày cũ giờ đều đã nhường chỗ cho sự bình yên và trân trọng. Chính luôn trân trọng vì chúng ta đã từng là một phần thanh xuân của nhau, đã từng bước qua những nỗi đau để rồi cùng nhau trưởng thành. Giờ đây, khi mỗi người đều đang bước trên một con đường riêng, mình mong những điều tốt đẹp và dịu dàng nhất sẽ luôn ở lại bên MiNu.</p>
         <p>Tuổi mới mong cho Minu có thật nhiều giấc ngủ ngon, những buổi sáng thức dậy thấy lòng nhẹ đi không còn muộn phiền và tổn thương. Manifest cho MiNu sẽ luôn tìm thấy những người ở cạnh bên, những người đủ ấm áp, đủ bao dung để MiNu không bao giờ phải gồng mình che giấu đi những cảm xúc thật, dù là niềm vui hay những lúc yếu lòng.</p>
@@ -315,37 +315,39 @@
       }
       await document.fonts.ready;
       if(run!==writeRun||overlay.hidden)return;
-      let previous=null;
-      for(const word of inkWords){
-        if(run!==writeRun||overlay.hidden)return;
+      const totalDuration=5000;
+      const step=totalDuration/inkWords.length;
+      const penFrames=[];
+      const animations=[];
+      inkWords.forEach((word,index)=>{
         const x=word.offsetLeft;
         const y=word.offsetTop+word.offsetHeight*.84;
         const start=penPosition(x,y);
         const end=penPosition(x+word.offsetWidth,y);
+        penFrames.push({offset:index/inkWords.length,transform:start});
+        penFrames.push({offset:(index+.85)/inkWords.length,transform:end});
+        const letters=word.animate([{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0 0 0)'}],{delay:index*step,duration:Math.max(16,step*.85),easing:'linear',fill:'forwards'});
+        animations.push(letters);
+      });
+      penFrames.push({offset:1,transform:penFrames.at(-1).transform});
+      pen.style.opacity='1';
+      const penStroke=pen.animate(penFrames,{duration:totalDuration,easing:'linear',fill:'forwards'});
+      const startedAt=performance.now();
+      function followWriting(){
+        if(run!==writeRun||overlay.hidden)return;
+        const progress=Math.min(1,(performance.now()-startedAt)/totalDuration);
+        const word=inkWords[Math.min(inkWords.length-1,Math.floor(progress*inkWords.length))];
         const wordBottom=paperLines.offsetTop+word.offsetTop+word.offsetHeight;
-        if(wordBottom-paper.scrollTop>paper.clientHeight-85){
-          paper.scrollTo({top:Math.max(0,wordBottom-paper.clientHeight*.55),behavior:'smooth'});
-        }
-        if(previous){
-          const travel=pen.animate([{transform:previous.transform},{transform:start}],{duration:Math.abs(y-previous.y)>12?65:22,easing:'ease-in-out'});
-          await travel.finished.catch(()=>{});
-          if(run!==writeRun)return;
-          pen.style.transform=start;
-          travel.cancel();
-        }else pen.style.transform=start;
-        pen.style.opacity='1';
-        const duration=Math.max(40,Math.min(120,word.offsetWidth*.9));
-        const letters=word.animate([{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0 0 0)'}],{duration,easing:'linear',fill:'forwards'});
-        const stroke=pen.animate([{transform:start},{transform:end}],{duration,easing:'linear'});
-        await Promise.allSettled([letters.finished,stroke.finished]);
-        if(run!==writeRun)return;
-        word.classList.add('written');
-        letters.cancel();
-        pen.style.transform=end;
-        stroke.cancel();
-        previous={transform:end,y};
+        paper.scrollTop=Math.max(paper.scrollTop,wordBottom-paper.clientHeight*.7);
+        if(progress<1)requestAnimationFrame(followWriting);
       }
-      pen.animate([{opacity:1},{opacity:0}],{duration:300,fill:'forwards'});
+      requestAnimationFrame(followWriting);
+      await Promise.allSettled(animations.map(animation=>animation.finished));
+      if(run!==writeRun||overlay.hidden)return;
+      inkWords.forEach(word=>word.classList.add('written'));
+      animations.forEach(animation=>animation.cancel());
+      penStroke.cancel();
+      pen.style.opacity='0';
       signature.classList.add('signed');
     }
 
