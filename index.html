@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fbf4ef">
+  <meta name="description" content="Một lời chúc sinh nhật và một lá thư dành riêng cho Minu.">
+  <title>Chúc mừng sinh nhật, Minu ♡</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600;700&family=Dancing+Script:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body class="locked">
+  <section class="lock-screen" id="lockScreen" role="dialog" aria-modal="true" aria-labelledby="lockTitle">
+    <div class="lock-glow" aria-hidden="true"></div>
+    <div class="lock-sparkles" aria-hidden="true"><span>✦</span><span>✧</span><span>♡</span><span>✦</span><span>✧</span><span>✦</span><span>♡</span><span>✧</span></div>
+    <div class="lock-heart">
+      <div class="lock-corner lock-corner-top" aria-hidden="true">✧</div>
+      <div class="lock-corner lock-corner-bottom" aria-hidden="true">✧</div>
+      <div class="lock-content">
+        <div class="lock-emblem" aria-hidden="true">
+          <svg viewBox="0 0 130 94" fill="none"><path d="M12 25h106v62H12z" fill="#fff9f3" stroke="#bd8798" stroke-width="1.6"/><path d="M12 25l53 40 53-40" stroke="#bd8798" stroke-width="1.6"/><path d="M12 87l38-32m68 32L80 55" stroke="#d9adba" stroke-width="1.4"/><path d="M11 24L65 3l54 21-54 39L11 24Z" fill="#efd1d7" stroke="#bd8798" stroke-width="1.6"/><circle cx="65" cy="56" r="11" fill="#b77a8d"/><path d="M65 62c-5-3-8-6-8-10 0-4 5-6 8-2 3-4 8-2 8 2 0 4-3 7-8 10Z" fill="#fff9f3"/></svg>
+        </div>
+        <h1 id="lockTitle">Mật mã<span>♡</span></h1>
+        <div class="pass-dots" id="passDots" aria-label="Đã nhập 0 trên 4 số"><i></i><i></i><i></i><i></i></div>
+        <div class="number-pad" id="numberPad" aria-label="Bàn phím mật mã">
+          <button type="button" data-digit="1">1</button><button type="button" data-digit="2">2</button><button type="button" data-digit="3">3</button>
+          <button type="button" data-digit="4">4</button><button type="button" data-digit="5">5</button><button type="button" data-digit="6">6</button>
+          <button type="button" data-digit="7">7</button><button type="button" data-digit="8">8</button><button type="button" data-digit="9">9</button>
+          <span class="pad-heart" aria-hidden="true">♡</span><button type="button" data-digit="0">0</button><button type="button" id="passDelete" aria-label="Xóa số cuối">⌫</button>
+        </div>
+        <p class="lock-message" id="lockMessage" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cake-scene" id="cakeScene" hidden inert tabindex="-1" aria-labelledby="cakeTitle">
+    <div class="cake-haze" aria-hidden="true"></div>
+    <div class="cake-stars" aria-hidden="true"><span>✦</span><span>✧</span><span>♡</span><span>✦</span><span>✧</span><span>✦</span></div>
+    <div class="cake-content">
+      <h2 id="cakeTitle">Enjoy your birthday, Minu ♡</h2>
+      <div class="cake-stage" aria-hidden="true">
+        <svg class="cake-art" viewBox="0 0 460 400" fill="none">
+          <defs>
+            <linearGradient id="cakeSide" x1="90" y1="210" x2="370" y2="327" gradientUnits="userSpaceOnUse"><stop stop-color="#e8aebd"/><stop offset=".52" stop-color="#d48fa6"/><stop offset="1" stop-color="#ba7291"/></linearGradient>
+            <linearGradient id="cakeIcing" x1="145" y1="181" x2="312" y2="280" gradientUnits="userSpaceOnUse"><stop stop-color="#fffdf5"/><stop offset="1" stop-color="#f5dfe0"/></linearGradient>
+            <linearGradient id="cakeStand" x1="160" y1="334" x2="310" y2="386" gradientUnits="userSpaceOnUse"><stop stop-color="#fffaf5"/><stop offset="1" stop-color="#ddbdc7"/></linearGradient>
+            <radialGradient id="flameGlow"><stop stop-color="#ffed9d" stop-opacity=".75"/><stop offset="1" stop-color="#ffed9d" stop-opacity="0"/></radialGradient>
+          </defs>
+          <circle cx="230" cy="197" r="172" fill="#fff6ef" opacity=".13"/>
+          <circle cx="230" cy="197" r="149" stroke="#fff3e6" opacity=".35"/>
+          <ellipse cx="230" cy="380" rx="160" ry="15" fill="#563450" opacity=".2"/>
+          <path d="M214 335h32v36h-32z" fill="url(#cakeStand)"/>
+          <ellipse cx="230" cy="373" rx="111" ry="15" fill="#f8e9e5" stroke="#e8c9ce" stroke-width="2"/>
+          <ellipse cx="230" cy="338" rx="160" ry="22" fill="url(#cakeStand)" stroke="#e6c5cb" stroke-width="2"/>
+          <ellipse cx="230" cy="333" rx="147" ry="15" fill="#fffaf5"/>
+          <path d="M98 211h264v110c0 15-59 27-132 27S98 336 98 321V211Z" fill="url(#cakeSide)" stroke="#ac6686" stroke-width="2"/>
+          <path d="M98 306c45 20 219 26 264 0" stroke="#f3ced6" stroke-width="4" opacity=".7"/>
+          <path d="M102 230c0 14 11 25 23 25s10-8 15-8c7 0 5 30 20 30 12 0 11-27 19-27s9 13 20 13c13 0 10-23 20-23s8 37 22 37c13 0 14-33 22-33s8 20 19 20c12 0 13-18 22-18 8 0 7 13 17 13 12 0 22-14 22-29v-16H102v16Z" fill="url(#cakeIcing)"/>
+          <ellipse cx="230" cy="211" rx="132" ry="35" fill="#fffaf4" stroke="#e6cbd0" stroke-width="2"/>
+          <ellipse cx="230" cy="213" rx="113" ry="26" stroke="#f0d8da" stroke-width="2"/>
+          <path d="M138 296c37 16 147 22 184 4" stroke="#f9dfdf" stroke-width="2" opacity=".7"/>
+          <g fill="#fff6ed" stroke="#eac5cf" stroke-width="1.5"><circle cx="139" cy="315" r="5"/><circle cx="168" cy="324" r="5"/><circle cx="199" cy="329" r="5"/><circle cx="230" cy="330" r="5"/><circle cx="261" cy="329" r="5"/><circle cx="292" cy="324" r="5"/><circle cx="321" cy="315" r="5"/></g>
+          <g class="cake-candle"><rect x="169" y="146" width="16" height="61" rx="5" fill="#f7e5e4" stroke="#cc8da3" stroke-width="1.5"/><path d="M174 153v46m6-46v46" stroke="#d49bac" stroke-width="2" opacity=".7"/><path d="M177 139v8" stroke="#65515c" stroke-width="2" stroke-linecap="round"/></g>
+          <g class="cake-candle"><rect x="222" y="128" width="16" height="78" rx="5" fill="#f7e5e4" stroke="#cc8da3" stroke-width="1.5"/><path d="M227 135v63m6-63v63" stroke="#d49bac" stroke-width="2" opacity=".7"/><path d="M230 121v8" stroke="#65515c" stroke-width="2" stroke-linecap="round"/></g>
+          <g class="cake-candle"><rect x="275" y="146" width="16" height="61" rx="5" fill="#f7e5e4" stroke="#cc8da3" stroke-width="1.5"/><path d="M280 153v46m6-46v46" stroke="#d49bac" stroke-width="2" opacity=".7"/><path d="M283 139v8" stroke="#65515c" stroke-width="2" stroke-linecap="round"/></g>
+          <g class="flame-wrap flame-one"><circle cx="177" cy="121" r="27" fill="url(#flameGlow)"/><path class="flame-shape" d="M177 140c-10-7-10-18-3-28 2-3 3-7 3-10 9 9 14 21 8 30-2 4-5 6-8 8Z" fill="#ffd276"/><path d="M177 137c-5-5-4-11 0-17 5 6 6 12 0 17Z" fill="#fff7c7"/></g>
+          <g class="flame-wrap flame-two"><circle cx="230" cy="102" r="31" fill="url(#flameGlow)"/><path class="flame-shape" d="M230 122c-11-8-11-21-3-32 2-3 3-8 3-11 10 10 16 24 9 35-2 4-5 7-9 8Z" fill="#ffd276"/><path d="M230 119c-5-5-5-12 0-19 5 7 6 14 0 19Z" fill="#fff7c7"/></g>
+          <g class="flame-wrap flame-three"><circle cx="283" cy="121" r="27" fill="url(#flameGlow)"/><path class="flame-shape" d="M283 140c-10-7-10-18-3-28 2-3 3-7 3-10 9 9 14 21 8 30-2 4-5 6-8 8Z" fill="#ffd276"/><path d="M283 137c-5-5-4-11 0-17 5 6 6 12 0 17Z" fill="#fff7c7"/></g>
+          <g class="candle-smoke" stroke="#fff9f2" stroke-width="2" stroke-linecap="round"><path class="smoke-one" d="M177 133c-10-13 12-16 2-32"/><path class="smoke-two" d="M230 115c-11-14 12-17 2-35"/><path class="smoke-three" d="M283 133c-10-13 12-16 2-32"/></g>
+          <path d="M111 176l7 8m286-40-8 8M76 249l9 4m296 20 9-5" stroke="#fff4e9" stroke-width="2" stroke-linecap="round" opacity=".6"/>
+        </svg>
+        <div class="cake-confetti" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <button class="candle-touch candle-touch-one" type="button" data-candle="one" aria-label="Tắt nến thứ nhất"></button>
+        <button class="candle-touch candle-touch-two" type="button" data-candle="two" aria-label="Tắt nến thứ hai"></button>
+        <button class="candle-touch candle-touch-three" type="button" data-candle="three" aria-label="Tắt nến thứ ba"></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="flower-scene" id="flowerScene" hidden inert tabindex="-1" aria-labelledby="flowerTitle">
+    <div class="flower-halo" aria-hidden="true"></div>
+    <svg class="flower-garden" viewBox="0 0 1200 760" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <symbol id="gardenDaisy" viewBox="0 0 100 220">
+          <path d="M50 78c-6 48 6 91-1 142" fill="none" stroke="#66866d" stroke-width="4" stroke-linecap="round"/>
+          <path d="M49 151c-24-23-34-9-31 1 7 14 24 14 31-1Zm1 27c25-29 35-12 29-2-8 12-21 14-29 2Z" fill="#88aa84"/>
+          <g fill="currentColor"><ellipse cx="50" cy="30" rx="14" ry="29"/><ellipse cx="50" cy="86" rx="14" ry="29"/><ellipse cx="22" cy="58" rx="29" ry="14"/><ellipse cx="78" cy="58" rx="29" ry="14"/><ellipse cx="30" cy="38" rx="14" ry="25" transform="rotate(-45 30 38)"/><ellipse cx="70" cy="38" rx="14" ry="25" transform="rotate(45 70 38)"/><ellipse cx="30" cy="78" rx="14" ry="25" transform="rotate(45 30 78)"/><ellipse cx="70" cy="78" rx="14" ry="25" transform="rotate(-45 70 78)"/></g>
+          <circle cx="50" cy="58" r="16" fill="#f8d897"/><circle cx="50" cy="58" r="9" fill="#e7a875"/>
+        </symbol>
+        <symbol id="gardenRose" viewBox="0 0 100 220">
+          <path d="M50 73c-8 47 4 96-3 147" fill="none" stroke="#65846d" stroke-width="4" stroke-linecap="round"/>
+          <path d="M48 155c-27-19-32-4-25 6 10 11 22 8 25-6Zm1 28c22-26 34-11 29 0-9 12-22 12-29 0Z" fill="#8eae86"/>
+          <g fill="currentColor"><path d="M50 9c19-18 40 4 38 24 15 19 1 46-23 52-20 12-48-1-54-24C2 36 20 11 50 9Z"/><path d="M22 37c9-13 26-18 39-9 14-8 27 0 27 13-6 28-29 42-50 35C19 68 15 50 22 37Z" fill="#ffffff38"/><path d="M35 41c8-11 24-14 32-3 8 10 1 25-11 28-14 2-25-11-21-25Z" fill="#9f587a77"/><path d="M46 42c8-4 18 2 14 10-2 7-12 9-17 3-3-5 0-11 3-13Z" fill="#fff7ee7a"/></g>
+        </symbol>
+      </defs>
+      <use href="#gardenDaisy" x="-22" y="350" width="160" height="352" style="color:#f9e7df"/><use href="#gardenRose" x="68" y="278" width="148" height="326" style="color:#d695ac"/><use href="#gardenDaisy" x="162" y="410" width="122" height="268" style="color:#f6c6cf"/>
+      <use href="#gardenRose" x="238" y="460" width="116" height="255" style="color:#e7b0a9"/><use href="#gardenDaisy" x="313" y="484" width="106" height="234" style="color:#fff3e3"/><use href="#gardenRose" x="383" y="525" width="104" height="229" style="color:#d995ad"/>
+      <use href="#gardenDaisy" x="462" y="505" width="121" height="266" style="color:#f7c8d1"/><use href="#gardenRose" x="540" y="545" width="96" height="211" style="color:#e9b5ac"/><use href="#gardenDaisy" x="600" y="494" width="122" height="269" style="color:#fff0da"/>
+      <use href="#gardenRose" x="689" y="518" width="108" height="238" style="color:#d997ab"/><use href="#gardenDaisy" x="765" y="470" width="126" height="277" style="color:#f6d7d5"/><use href="#gardenRose" x="851" y="447" width="130" height="286" style="color:#e4a4a8"/>
+      <use href="#gardenDaisy" x="938" y="392" width="142" height="312" style="color:#fff0e0"/><use href="#gardenRose" x="1026" y="294" width="154" height="339" style="color:#d995b2"/><use href="#gardenDaisy" x="1111" y="382" width="148" height="326" style="color:#f4c5cc"/>
+      <use href="#gardenRose" x="6" y="563" width="104" height="229" style="color:#e8aaa8"/><use href="#gardenDaisy" x="105" y="566" width="105" height="231" style="color:#ffefdd"/><use href="#gardenRose" x="200" y="574" width="99" height="218" style="color:#d9a2b9"/>
+      <use href="#gardenDaisy" x="808" y="562" width="108" height="238" style="color:#fff0dd"/><use href="#gardenRose" x="914" y="560" width="103" height="227" style="color:#d99aae"/><use href="#gardenDaisy" x="1009" y="553" width="115" height="253" style="color:#f6ced4"/><use href="#gardenRose" x="1113" y="550" width="111" height="244" style="color:#e5aaa3"/>
+    </svg>
+    <div class="flower-petals" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="flower-message">
+      <span class="flower-message-star" aria-hidden="true">✦</span>
+      <h2 id="flowerTitle">Happy Birthday<br><em>Minu ♡</em></h2>
+      <button id="flowerNext" type="button">Mở quà <span aria-hidden="true">→</span></button>
+    </div>
+  </section>
+
+  <main class="birthday-page" id="birthdayPage" inert>
+    <div class="ambient ambient-one" aria-hidden="true"></div><div class="ambient ambient-two" aria-hidden="true"></div>
+    <div class="floating-notes" aria-hidden="true">
+      <span>✦</span><span>♡</span><span>✧</span><span>♡</span><span>✦</span><span>✧</span>
+      <span>♡</span><span>✦</span><span>♡</span><span>✧</span><span>✦</span><span>♡</span>
+    </div>
+    <section class="gift-room" tabindex="-1" aria-label="Ba hộp quà">
+      <div class="gift-grid">
+        <button class="gift-box gift-album" type="button" data-gift="album" aria-label="Mở hộp quà thứ nhất">
+          <span class="gift-art" aria-hidden="true"><span class="gift-lid"></span><span class="gift-body"></span><span class="gift-ribbon-v"></span><span class="gift-ribbon-h"></span><span class="gift-bow"><i class="bow-wing bow-wing-left"></i><i class="bow-wing bow-wing-right"></i><i class="bow-tail bow-tail-left"></i><i class="bow-tail bow-tail-right"></i><i class="bow-knot"></i></span></span>
+        </button>
+        <button class="gift-box gift-music" type="button" data-gift="music" aria-label="Mở hộp quà thứ hai">
+          <span class="gift-art" aria-hidden="true"><span class="gift-lid"></span><span class="gift-body"></span><span class="gift-ribbon-v"></span><span class="gift-ribbon-h"></span><span class="gift-bow"><i class="bow-wing bow-wing-left"></i><i class="bow-wing bow-wing-right"></i><i class="bow-tail bow-tail-left"></i><i class="bow-tail bow-tail-right"></i><i class="bow-knot"></i></span></span>
+        </button>
+        <button class="gift-box gift-letter" id="openLetter" type="button" data-gift="letter" aria-label="Mở hộp quà thứ ba">
+          <span class="gift-art" aria-hidden="true"><span class="gift-lid"></span><span class="gift-body"></span><span class="gift-ribbon-v"></span><span class="gift-ribbon-h"></span><span class="gift-bow"><i class="bow-wing bow-wing-left"></i><i class="bow-wing bow-wing-right"></i><i class="bow-tail bow-tail-left"></i><i class="bow-tail bow-tail-right"></i><i class="bow-knot"></i></span></span>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <div class="gift-overlay" id="giftOverlay" hidden>
+    <div class="gift-shade" id="giftShade"></div>
+    <section class="gift-panel" id="giftPanel" role="dialog" aria-modal="true" tabindex="-1" aria-labelledby="albumTitle">
+      <button class="gift-close" id="giftClose" type="button" aria-label="Đóng hộp quà">×</button>
+      <div class="gift-view album-view" id="albumView" hidden>
+        <h2 id="albumTitle">Album</h2>
+        <div class="album-stage">
+          <button class="album-book" id="albumBook" type="button" aria-label="Mở album" data-page="cover">
+            <span class="album-pages-edge" aria-hidden="true"></span>
+            <span class="album-leaf" aria-hidden="true">
+              <span class="album-cover-face" id="albumCoverFace"><span class="album-cover-frame"></span><span class="album-cover-spark">✦</span><span class="album-cover-title">Album</span><span class="album-cover-mark">♡</span></span>
+              <span class="album-page-face" id="albumPageFace" hidden><span class="album-photo" id="albumPhoto"><img class="album-backdrop" id="albumBackdrop" alt=""><img class="album-image" id="albumImage" alt=""></span><span class="album-page-corner"></span></span>
+              <span class="album-back-face" id="albumBackFace" hidden><span class="album-cover-frame"></span><span class="album-back-mark">♡</span></span>
+            </span>
+          </button>
+        </div>
+      </div>
+      <div class="gift-view music-view" id="musicView" hidden>
+        <h2 id="musicTitle">Song for Minu ♡</h2>
+        <div class="music-stage" aria-hidden="true">
+          <span class="music-spark music-spark-one">✧</span><span class="music-spark music-spark-two">✦</span>
+          <div class="turntable">
+            <div class="record"><div class="record-label">♪</div></div>
+            <div class="tonearm"><i></i></div>
+            <span class="turntable-knob"></span>
+            <span class="turntable-flower"><i></i></span>
+          </div>
+        </div>
+        <div class="music-progress" aria-hidden="true"><span id="musicProgress"></span></div>
+        <div class="music-controls"><button id="musicPlay" class="music-play" type="button">▶ Play</button><button id="musicReplay" class="music-replay" type="button">↺ Replay</button></div>
+        <audio id="giftAudio" preload="auto"></audio>
+      </div>
+    </section>
+  </div>
+
+  <div class="letter-overlay" id="letterOverlay" hidden>
+    <div class="overlay-shade" id="overlayShade"></div>
+    <section class="paper-sheet" role="dialog" aria-modal="true" aria-labelledby="letterTitle" tabindex="-1" id="paperSheet">
+      <button class="close-letter" id="closeLetter" type="button" aria-label="Đóng lá thư">×</button>
+      <div class="paper-lines">
+        <h2 id="letterTitle">Minu à,</h2>
+        <p>Chúc mừng sinh nhật Minu.</p>
+        <p>Mong tuổi mới cho Minu nhiều giấc ngủ ngon, những buổi sáng nhẹ lòng, và những người ở cạnh mà Minu không cần giấu cảm xúc.</p>
+        <p>Mình biết có lúc mình đã làm Minu tổn thương. Mình xin lỗi. Minu không cần trả lời lá thư này.</p>
+        <p>Hôm nay, mong Minu được vui theo cách của Minu. ♡</p>
+        <span class="writing-pen" id="writingPen" aria-hidden="true"><svg viewBox="0 0 60 82" fill="none"><defs><linearGradient id="quillFeather" x1="16" y1="56" x2="53" y2="5" gradientUnits="userSpaceOnUse"><stop stop-color="#b97993"/><stop offset=".55" stop-color="#e9bdc9"/><stop offset="1" stop-color="#fff4ed"/></linearGradient></defs><path d="M15 66C17 43 27 17 53 4c4 17-1 38-24 53L15 66Z" fill="url(#quillFeather)" stroke="#9c6d84" stroke-width="1.2"/><path d="M14 67C22 47 35 24 51 8M22 50l-7-8m13-4-8-9m16-5-8-7m-8 35 12-2m-7-8 16-6m-10-5 14-8" stroke="#8b5f79" stroke-width=".9" stroke-linecap="round" opacity=".75"/><path d="M8 77C21 54 35 30 49 11" stroke="#5d485e" stroke-width="2" stroke-linecap="round"/><path d="M6 80l2-9 5 4-7 5Z" fill="#4c3c52"/><path d="M7 78l5-5" stroke="#fff7ef" stroke-width=".8"/></svg></span>
+      </div>
+      <div class="letter-signature" aria-label="Ký tên chinhpui, chữ ký Chinh">
+        <span class="signature-name">chinhpui</span>
+        <span class="signature-mark" aria-hidden="true">Chinh</span>
+        <svg class="signature-flourish" viewBox="0 0 240 35" fill="none" aria-hidden="true"><path d="M5 22C63 33 153 29 225 10c15-4 9-10-4-7" pathLength="1"/></svg>
+      </div>
+      <p class="postscript" id="postscript" hidden>Một hôm nào đó, nếu Minu thấy vui, mình muốn dành sẵn một chiếc bàn nhỏ, hai chỗ ngồi, và một bất ngờ thơm mùi hoa. Phần còn lại, cứ để mình lo. ♡</p>
+      <button class="fold-note" id="foldNote" type="button" aria-label="Mở lời nhắn ở góc thư" aria-controls="postscript" aria-expanded="false"><span>P.S.</span></button>
+    </section>
+  </div>
+  <script>
+  (()=>{
+    const $=selector=>document.querySelector(selector);
+    const lock=$('#lockScreen');
+    const cake=$('#cakeScene');
+    const flowerScene=$('#flowerScene');
+    const flowerNext=$('#flowerNext');
+    const candles=[...document.querySelectorAll('.candle-touch')];
+    const page=$('#birthdayPage');
+    const gifts=[...document.querySelectorAll('.gift-box')];
+    const giftOverlay=$('#giftOverlay');
+    const giftPanel=$('#giftPanel');
+    const albumView=$('#albumView');
+    const albumBook=$('#albumBook');
+    const albumCoverFace=$('#albumCoverFace');
+    const albumPageFace=$('#albumPageFace');
+    const albumBackFace=$('#albumBackFace');
+    const albumBackdrop=$('#albumBackdrop');
+    const albumImage=$('#albumImage');
+    const musicView=$('#musicView');
+    const giftAudio=$('#giftAudio');
+    const musicPlay=$('#musicPlay');
+    const musicReplay=$('#musicReplay');
+    const dots=[...document.querySelectorAll('#passDots i')];
+    const message=$('#lockMessage');
+    const trigger=$('#openLetter');
+    const overlay=$('#letterOverlay');
+    const paper=$('#paperSheet');
+    const fold=$('#foldNote');
+    const postscript=$('#postscript');
+    const pen=$('#writingPen');
+    const paperLines=$('.paper-lines');
+    const signature=$('.letter-signature');
+    const letterTextElements=[...document.querySelectorAll('.paper-lines h2, .paper-lines p')];
+    const prefersLessMotion=matchMedia('(prefers-reduced-motion: reduce)');
+    const storageKey='minu-birthday-unlocked-v1';
+    let entered='',busy=false,opening=false,closing=false,writeRun=0,candlesOut=0,giftBusy=false,activeGift=null,flowerLeaving=false,fxAudio=null;
+    const albumPhotos=['assets/minu-01.jpg','assets/minu-02.jpg','assets/minu-03.jpg','assets/minu-04.jpg'];
+    let albumIndex=-1,albumTurning=false,albumTurnRun=0;
+
+    function renderAlbum(){
+      const isCover=albumIndex===-1;
+      const isBack=albumIndex===albumPhotos.length;
+      albumCoverFace.hidden=!isCover;
+      albumPageFace.hidden=isCover||isBack;
+      albumBackFace.hidden=!isBack;
+      albumBook.dataset.page=isCover?'cover':isBack?'back':'photo';
+      albumBook.setAttribute('aria-label',isCover?'Mở album':isBack?'Xem lại bìa trước':albumIndex===albumPhotos.length-1?'Lật tới bìa sau':`Lật sang ảnh ${albumIndex+2}`);
+      if(!isCover&&!isBack){
+        const src=albumPhotos[albumIndex];
+        albumImage.src=src;
+        albumBackdrop.src=src;
+      }
+    }
+    function turnAlbum(direction=1){
+      if(albumTurning)return;
+      let next=albumIndex+direction;
+      if(next>albumPhotos.length)next=-1;
+      if(next<-1)next=albumPhotos.length;
+      albumTurning=true;
+      const run=++albumTurnRun;
+      albumBook.classList.add('turning');
+      setTimeout(()=>{
+        if(run!==albumTurnRun)return;
+        albumIndex=next;
+        renderAlbum();
+      },prefersLessMotion.matches?20:310);
+      setTimeout(()=>{
+        if(run!==albumTurnRun)return;
+        albumBook.classList.remove('turning');
+        albumTurning=false;
+      },prefersLessMotion.matches?30:620);
+    }
+    function resetAlbum(){
+      albumTurnRun++;
+      albumTurning=false;
+      albumBook.classList.remove('turning');
+      albumIndex=-1;
+      renderAlbum();
+    }
+    albumBook.addEventListener('click',()=>turnAlbum());
+    albumBook.addEventListener('keydown',event=>{
+      if(event.key==='ArrowLeft'||event.key==='ArrowRight'){
+        event.preventDefault();
+        turnAlbum(event.key==='ArrowLeft'?-1:1);
+      }
+    });
+    renderAlbum();
+
+    const inkWords=[];
+    letterTextElements.forEach(line=>{
+      const fullText=line.textContent.trim();
+      line.setAttribute('aria-label',fullText);
+      line.textContent='';
+      const words=fullText.split(/\s+/);
+      words.forEach((word,index)=>{
+        const ink=document.createElement('span');
+        ink.className='ink-word';
+        ink.setAttribute('aria-hidden','true');
+        ink.textContent=word;
+        line.append(ink);
+        if(index<words.length-1)line.append(' ');
+        inkWords.push(ink);
+      });
+    });
+
+    function stopWriting(){
+      writeRun++;
+      pen.getAnimations().forEach(animation=>animation.cancel());
+      inkWords.forEach(word=>word.getAnimations().forEach(animation=>animation.cancel()));
+      pen.style.opacity='0';
+    }
+    const penPosition=(x,y)=>`translate3d(${x-7}px,${y-78}px,0)`;
+    async function writeLetter(){
+      stopWriting();
+      const run=writeRun;
+      paper.classList.add('writing');
+      inkWords.forEach(word=>word.classList.remove('written'));
+      signature.classList.remove('signed');
+      if(prefersLessMotion.matches){
+        inkWords.forEach(word=>word.classList.add('written'));
+        signature.classList.add('signed');
+        return;
+      }
+      await document.fonts.ready;
+      if(run!==writeRun||overlay.hidden)return;
+      let previous=null;
+      for(const word of inkWords){
+        if(run!==writeRun||overlay.hidden)return;
+        const x=word.offsetLeft;
+        const y=word.offsetTop+word.offsetHeight*.84;
+        const start=penPosition(x,y);
+        const end=penPosition(x+word.offsetWidth,y);
+        const wordBottom=paperLines.offsetTop+word.offsetTop+word.offsetHeight;
+        if(wordBottom-paper.scrollTop>paper.clientHeight-85){
+          paper.scrollTo({top:Math.max(0,wordBottom-paper.clientHeight*.55),behavior:'smooth'});
+        }
+        if(previous){
+          const travel=pen.animate([{transform:previous.transform},{transform:start}],{duration:Math.abs(y-previous.y)>12?170:65,easing:'ease-in-out'});
+          await travel.finished.catch(()=>{});
+          if(run!==writeRun)return;
+          pen.style.transform=start;
+          travel.cancel();
+        }else pen.style.transform=start;
+        pen.style.opacity='1';
+        const duration=Math.max(110,Math.min(320,word.offsetWidth*2.4));
+        const letters=word.animate([{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0 0 0)'}],{duration,easing:'linear',fill:'forwards'});
+        const stroke=pen.animate([{transform:start},{transform:end}],{duration,easing:'linear'});
+        await Promise.allSettled([letters.finished,stroke.finished]);
+        if(run!==writeRun)return;
+        word.classList.add('written');
+        letters.cancel();
+        pen.style.transform=end;
+        stroke.cancel();
+        previous={transform:end,y};
+      }
+      pen.animate([{opacity:1},{opacity:0}],{duration:300,fill:'forwards'});
+      signature.classList.add('signed');
+    }
+
+    function paintDots(){
+      dots.forEach((dot,index)=>dot.classList.toggle('filled',index<entered.length));
+      $('#passDots').setAttribute('aria-label',`Đã nhập ${entered.length} trên 4 số`);
+    }
+    function finishUnlock(){
+      lock.hidden=true;
+      cake.hidden=false;
+      cake.inert=false;
+      requestAnimationFrame(()=>cake.classList.add('lit'));
+      cake.focus({preventScroll:true});
+    }
+    function playCandleSound(final){
+      try{
+        const Context=window.AudioContext||window.webkitAudioContext;
+        if(!Context)return;
+        fxAudio??=new Context();
+        if(fxAudio.state==='suspended')fxAudio.resume().catch(()=>{});
+        const note=(frequency,start,duration,volume)=>{
+          const oscillator=fxAudio.createOscillator();
+          const gain=fxAudio.createGain();
+          oscillator.type='sine';
+          oscillator.frequency.setValueAtTime(frequency,start);
+          oscillator.connect(gain).connect(fxAudio.destination);
+          gain.gain.setValueAtTime(.0001,start);
+          gain.gain.exponentialRampToValueAtTime(volume,start+.025);
+          gain.gain.exponentialRampToValueAtTime(.0001,start+duration);
+          oscillator.start(start);
+          oscillator.stop(start+duration+.02);
+        };
+        const now=fxAudio.currentTime;
+        note(760,now,.18,.028);
+        if(final)[523.25,659.25,783.99,1046.5,783.99,1046.5].forEach((frequency,index)=>note(frequency,now+.16+index*.19,.55,index===3||index===5?.065:.045));
+      }catch{}
+    }
+    function showFlowers(){
+      cake.hidden=true;
+      cake.inert=true;
+      flowerScene.hidden=false;
+      flowerScene.inert=false;
+      requestAnimationFrame(()=>flowerScene.classList.add('entered'));
+      flowerScene.focus({preventScroll:true});
+    }
+    function showBirthday(){
+      if(flowerLeaving||flowerScene.hidden)return;
+      flowerLeaving=true;
+      flowerScene.classList.add('leaving');
+      setTimeout(()=>{
+        flowerScene.hidden=true;
+        flowerScene.inert=true;
+        page.inert=false;
+        document.body.classList.remove('locked');
+        requestAnimationFrame(()=>page.classList.add('entered'));
+        $('.gift-room').focus({preventScroll:true});
+      },prefersLessMotion.matches?20:700);
+    }
+    flowerNext.addEventListener('click',showBirthday);
+    candles.forEach(button=>button.addEventListener('click',()=>{
+      if(button.disabled||cake.classList.contains('blown'))return;
+      button.disabled=true;
+      cake.classList.add(`off-${button.dataset.candle}`);
+      candlesOut++;
+      playCandleSound(candlesOut===3);
+      if(candlesOut<3){
+        cake.focus({preventScroll:true});
+      }else{
+        cake.classList.add('blown');
+        setTimeout(()=>cake.classList.add('leaving'),prefersLessMotion.matches?30:1050);
+        setTimeout(showFlowers,prefersLessMotion.matches?80:1800);
+      }
+    }));
+
+    function openGift(button){
+      if(giftBusy||!giftOverlay.hidden)return;
+      giftBusy=true;
+      activeGift=button;
+      button.classList.add('opening');
+      setTimeout(()=>{
+        const isAlbum=button.dataset.gift==='album';
+        albumView.hidden=!isAlbum;
+        musicView.hidden=isAlbum;
+        giftPanel.setAttribute('aria-labelledby',isAlbum?'albumTitle':'musicTitle');
+        if(isAlbum)resetAlbum();
+        giftOverlay.hidden=false;
+        page.inert=true;
+        document.body.style.overflow='hidden';
+        giftPanel.focus({preventScroll:true});
+        giftBusy=false;
+      },prefersLessMotion.matches?20:520);
+    }
+    function closeGift(){
+      if(giftOverlay.hidden||giftBusy)return;
+      giftBusy=true;
+      giftAudio.pause();
+      giftOverlay.classList.add('closing');
+      setTimeout(()=>{
+        giftOverlay.hidden=true;
+        giftOverlay.classList.remove('closing');
+        page.inert=false;
+        document.body.style.overflow='';
+        activeGift?.classList.remove('opening');
+        activeGift?.focus({preventScroll:true});
+        activeGift=null;
+        giftBusy=false;
+      },prefersLessMotion.matches?20:300);
+    }
+    gifts.filter(button=>button!==trigger).forEach(button=>button.addEventListener('click',()=>openGift(button)));
+    $('#giftClose').addEventListener('click',closeGift);
+    $('#giftShade').addEventListener('click',closeGift);
+
+    const songUrl='assets/wave-to-earth-love.mp3';
+    function createDemoSong(){
+      const rate=22050,beat=.42;
+      const melody=[523.25,659.25,783.99,659.25,587.33,659.25,523.25,392,440,523.25,659.25,587.33,523.25,440,392,0,523.25,659.25,783.99,880,783.99,659.25,587.33,523.25,440,587.33,523.25,392];
+      const samples=new Float32Array(Math.ceil((melody.length*beat+1)*rate));
+      melody.forEach((frequency,index)=>{
+        if(!frequency)return;
+        const start=Math.floor((index*beat+.05)*rate);
+        const length=Math.min(Math.floor(.58*rate),samples.length-start);
+        for(let i=0;i<length;i++){
+          const time=i/rate;
+          const envelope=(1-Math.exp(-time*70))*Math.exp(-time*5.2);
+          samples[start+i]+=(Math.sin(2*Math.PI*frequency*time)*.36+Math.sin(4*Math.PI*frequency*time)*.09+Math.sin(Math.PI*frequency*time)*.08)*envelope;
+        }
+      });
+      const buffer=new ArrayBuffer(44+samples.length*2);
+      const view=new DataView(buffer);
+      const label=(offset,value)=>{for(let i=0;i<value.length;i++)view.setUint8(offset+i,value.charCodeAt(i))};
+      label(0,'RIFF');view.setUint32(4,buffer.byteLength-8,true);label(8,'WAVE');label(12,'fmt ');
+      view.setUint32(16,16,true);view.setUint16(20,1,true);view.setUint16(22,1,true);
+      view.setUint32(24,rate,true);view.setUint32(28,rate*2,true);view.setUint16(32,2,true);view.setUint16(34,16,true);
+      label(36,'data');view.setUint32(40,samples.length*2,true);
+      samples.forEach((sample,index)=>view.setInt16(44+index*2,Math.round(Math.max(-1,Math.min(1,sample))*32767),true));
+      return URL.createObjectURL(new Blob([buffer],{type:'audio/wav'}));
+    }
+    function prepareSong(){if(!giftAudio.getAttribute('src'))giftAudio.src=songUrl||createDemoSong()}
+    musicPlay.addEventListener('click',()=>{
+      prepareSong();
+      if(giftAudio.paused){
+        if(giftAudio.ended)giftAudio.currentTime=0;
+        giftAudio.play().catch(()=>{});
+      }else giftAudio.pause();
+    });
+    musicReplay.addEventListener('click',()=>{
+      prepareSong();
+      giftAudio.currentTime=0;
+      giftAudio.play().catch(()=>{});
+    });
+    giftAudio.addEventListener('play',()=>{musicView.classList.add('playing');musicPlay.textContent='Ⅱ Pause'});
+    giftAudio.addEventListener('pause',()=>{musicView.classList.remove('playing');musicPlay.textContent='▶ Play'});
+    giftAudio.addEventListener('timeupdate',()=>{
+      $('#musicProgress').style.width=giftAudio.duration?`${giftAudio.currentTime/giftAudio.duration*100}%`:'0%';
+    });
+    function unlock(){
+      busy=true;
+      message.textContent='Chúc mừng sinh nhật, Minu ♡';
+      try{sessionStorage.setItem(storageKey,'open')}catch{}
+      lock.classList.add('unlocking');
+      setTimeout(finishUnlock,prefersLessMotion.matches?20:620);
+    }
+    function digit(value){
+      if(busy||lock.hidden||entered.length===4)return;
+      entered+=value;
+      message.textContent='';
+      paintDots();
+      if(entered.length!==4)return;
+      if(entered==='0211'){unlock();return}
+      busy=true;
+      message.textContent='Chưa đúng rồi, thử lại nhé ♡';
+      lock.querySelector('.lock-heart').classList.add('wrong');
+      setTimeout(()=>{
+        entered='';busy=false;paintDots();
+        lock.querySelector('.lock-heart').classList.remove('wrong');
+      },prefersLessMotion.matches?50:500);
+    }
+    function backspace(){
+      if(busy||lock.hidden)return;
+      entered=entered.slice(0,-1);
+      message.textContent='';
+      paintDots();
+    }
+    $('#numberPad').addEventListener('click',event=>{
+      const button=event.target.closest('button[data-digit]');
+      if(button)digit(button.dataset.digit);
+    });
+    $('#passDelete').addEventListener('click',backspace);
+    document.addEventListener('keydown',event=>{
+      if(!lock.hidden){
+        if(/^\d$/.test(event.key)){event.preventDefault();digit(event.key)}
+        if(event.key==='Backspace'){event.preventDefault();backspace()}
+        return;
+      }
+      if(event.key==='Escape'&&!overlay.hidden)closeLetter();
+      else if(event.key==='Escape'&&!giftOverlay.hidden)closeGift();
+    });
+
+    function showLetter(){
+      if(opening||closing||!overlay.hidden)return;
+      opening=true;
+      trigger.classList.add('opening');
+      setTimeout(()=>{
+        overlay.hidden=false;
+        overlay.classList.remove('closing');
+        page.inert=true;
+        document.body.style.overflow='hidden';
+        paper.focus({preventScroll:true});
+        paper.classList.remove('writing');
+        void paper.offsetWidth;
+        paper.scrollTop=0;
+        writeLetter();
+        opening=false;
+      },prefersLessMotion.matches?20:720);
+    }
+    function closeLetter(){
+      if(overlay.hidden||closing)return;
+      closing=true;
+      stopWriting();
+      overlay.classList.add('closing');
+      setTimeout(()=>{
+        overlay.hidden=true;
+        overlay.classList.remove('closing');
+        page.inert=false;
+        document.body.style.overflow='';
+        trigger.classList.remove('opening');
+        trigger.focus({preventScroll:true});
+        closing=false;
+      },prefersLessMotion.matches?20:380);
+    }
+    trigger.addEventListener('click',showLetter);
+    $('#closeLetter').addEventListener('click',closeLetter);
+    $('#overlayShade').addEventListener('click',closeLetter);
+    fold.addEventListener('click',()=>{
+      const open=fold.getAttribute('aria-expanded')!=='true';
+      fold.setAttribute('aria-expanded',String(open));
+      fold.setAttribute('aria-label',open?'Gấp lời nhắn ở góc thư':'Mở lời nhắn ở góc thư');
+      postscript.hidden=!open;
+    });
+
+    try{if(sessionStorage.getItem(storageKey)==='open')finishUnlock()}catch{}
+  })();
+  </script>
+</body>
+</html>
