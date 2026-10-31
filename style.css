@@ -254,8 +254,8 @@ body.locked{overflow:hidden}
 @keyframes paper-open{from{opacity:0;transform:translateY(65px) scale(.8) rotate(-5deg)}to{opacity:1;transform:translateY(0) scale(1) rotate(0)}}
 @keyframes paper-close{to{opacity:0;transform:translateY(55px) scale(.88) rotate(4deg)}}
 .close-letter{position:absolute;z-index:3;right:15px;top:12px;width:34px;height:34px;border:0;border-radius:50%;background:#f3e2e0;color:#9c6875;font-size:28px;line-height:1}
-.paper-lines{position:relative;z-index:1;margin-top:0;font-family:"Charm",Georgia,serif;font-size:clamp(22px,3vw,26px);font-weight:400;line-height:1.62;letter-spacing:0}
-.paper-lines h2{margin:0 0 20px;font:700 clamp(34px,5vw,42px)/1.35 "Charm",Georgia,serif;color:#995b70;transform:rotate(-2deg)}
+.paper-lines{position:relative;z-index:1;margin-top:0;font-family:"Charm",Georgia,serif;font-size:clamp(18px,2.3vw,21px);font-weight:400;line-height:1.62;letter-spacing:0}
+.paper-lines h2{margin:0 0 20px;font:700 clamp(30px,4vw,34px)/1.35 "Charm",Georgia,serif;color:#995b70;transform:rotate(-2deg)}
 .paper-lines p{margin:0 0 20px;min-height:1em}
 .ink-word{display:inline-block;white-space:nowrap}
 .paper-sheet.writing .ink-word:not(.written){clip-path:inset(0 100% 0 0)}
@@ -273,13 +273,13 @@ body.locked{overflow:hidden}
 .paper-sheet.writing .signature-flourish path{stroke-dashoffset:1}
 .paper-sheet.writing .letter-signature.signed .signature-flourish path{animation:sign-flourish .8s .4s ease-out forwards}
 @keyframes sign-flourish{to{stroke-dashoffset:0}}
-.postscript{position:relative;z-index:1;margin:22px 34px 0 0;padding-top:16px;border-top:1px solid #dfc4bd;color:#a65f74;font:400 clamp(22px,3vw,26px)/1.55 "Charm",Georgia,serif;animation:line-in .55s both}
+.postscript{position:relative;z-index:1;margin:22px 34px 0 0;padding-top:16px;border-top:1px solid #dfc4bd;color:#a65f74;font:400 clamp(18px,2.3vw,21px)/1.55 "Charm",Georgia,serif;animation:line-in .55s both}
 .fold-note{position:relative;z-index:2;display:block;width:70px;height:70px;margin:12px -54px -56px auto;border:0;background:linear-gradient(135deg,transparent 49%,#f1d5d9 50%);color:#a7667b;transition:filter .25s}
 .fold-note:hover,.fold-note:focus-visible{filter:brightness(.96)}
 .fold-note[aria-expanded="true"]{background:linear-gradient(135deg,transparent 49%,#e9c6ce 50%)}
 .fold-note span{position:absolute;right:9px;bottom:11px;transform:rotate(-45deg);font:700 11px "DM Sans",sans-serif;letter-spacing:.04em}
 
 @media(max-width:650px){.gift-room{padding:25px 12px 35px}.gift-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 8px}.gift-box{gap:5px;padding:8px 3px}.gift-art{max-width:145px;height:130px}.gift-body{height:81px}.gift-lid{top:30px;height:34px}.gift-ribbon-v{top:31px}.gift-ribbon-h{top:41px}.gift-bow{top:1px;--bow-scale:.83}.gift-letter{grid-column:1/-1;justify-self:center;width:50%;min-width:145px}.flower-message h2{font-size:clamp(50px,12vw,67px)}.flower-message{margin-top:-10vh}.flower-message button{margin-top:24px}}
-@media(max-width:600px){.birthday-page:before{width:120vw}.birthday-page:after{width:100vw}.birthday-card{padding:30px 15px 40px}.birthday-card h1{font-size:clamp(68px,17vw,95px)}.envelope{width:175px;height:117px}.paper-sheet{max-height:88svh;padding:47px 31px 76px}.paper-lines{font-size:clamp(21px,5.4vw,24px)}.letter-signature{width:175px;margin-right:0}.signature-mark{font-size:49px}.fold-note{margin-right:-25px}.lock-heart{padding:14px}.lock-content{padding:20px 9px 8px}}
+@media(max-width:600px){.birthday-page:before{width:120vw}.birthday-page:after{width:100vw}.birthday-card{padding:30px 15px 40px}.birthday-card h1{font-size:clamp(68px,17vw,95px)}.envelope{width:175px;height:117px}.paper-sheet{max-height:88svh;padding:47px 31px 76px}.paper-lines{font-size:clamp(17px,4.6vw,19px)}.letter-signature{width:175px;margin-right:0}.signature-mark{font-size:49px}.fold-note{margin-right:-25px}.lock-heart{padding:14px}.lock-content{padding:20px 9px 8px}}
 @media(max-height:700px){.birthday-card{padding-top:20px;padding-bottom:20px}.birthday-card h1{font-size:clamp(62px,11vw,100px)}.title-rule{margin-top:18px}.envelope{width:154px;height:103px}.letter-trigger{gap:8px}.cake-stage{width:min(82vw,380px)}.lock-screen{place-items:start center}.lock-emblem{width:96px;height:75px;margin-bottom:8px}.lock-emblem svg{width:94px}.lock-heart{margin:auto 0}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.floating-notes,.lock-sparkles,.cake-stars,.cake-confetti,.writing-pen{display:none}.paper-sheet.writing .ink-word:not(.written){clip-path:none}.paper-sheet.writing .letter-signature{opacity:1}.paper-sheet.writing .signature-flourish path{stroke-dashoffset:0}}
