@@ -327,14 +327,14 @@
           paper.scrollTo({top:Math.max(0,wordBottom-paper.clientHeight*.55),behavior:'smooth'});
         }
         if(previous){
-          const travel=pen.animate([{transform:previous.transform},{transform:start}],{duration:Math.abs(y-previous.y)>12?170:65,easing:'ease-in-out'});
+          const travel=pen.animate([{transform:previous.transform},{transform:start}],{duration:Math.abs(y-previous.y)>12?65:22,easing:'ease-in-out'});
           await travel.finished.catch(()=>{});
           if(run!==writeRun)return;
           pen.style.transform=start;
           travel.cancel();
         }else pen.style.transform=start;
         pen.style.opacity='1';
-        const duration=Math.max(110,Math.min(320,word.offsetWidth*2.4));
+        const duration=Math.max(40,Math.min(120,word.offsetWidth*.9));
         const letters=word.animate([{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0 0 0)'}],{duration,easing:'linear',fill:'forwards'});
         const stroke=pen.animate([{transform:start},{transform:end}],{duration,easing:'linear'});
         await Promise.allSettled([letters.finished,stroke.finished]);
