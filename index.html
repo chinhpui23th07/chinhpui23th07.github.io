@@ -226,7 +226,10 @@
     const prefersLessMotion=matchMedia('(prefers-reduced-motion: reduce)');
     const storageKey='minu-birthday-unlocked-v1';
     let entered='',busy=false,opening=false,closing=false,writeRun=0,candlesOut=0,giftBusy=false,activeGift=null,flowerLeaving=false,fxAudio=null;
-    const albumPhotos=['assets/minu-01.jpg','assets/minu-02.jpg','assets/minu-03.jpg','assets/minu-04.jpg'];
+    const albumPhotos=[
+      'assets/minu-01.jpg','assets/minu-02.jpg','assets/minu-03.jpg','assets/minu-04.jpg',
+      'assets/minu-05.jpg','assets/minu-06.jpg','assets/minu-07.jpg','assets/minu-08.jpg','assets/minu-09.jpg'
+    ];
     let albumIndex=-1,albumTurning=false,albumTurnRun=0;
 
     function renderAlbum(){
