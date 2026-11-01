@@ -22,7 +22,7 @@
         <div class="lock-emblem" aria-hidden="true">
           <svg viewBox="0 0 130 94" fill="none"><path d="M12 25h106v62H12z" fill="#fff9f3" stroke="#bd8798" stroke-width="1.6"/><path d="M12 25l53 40 53-40" stroke="#bd8798" stroke-width="1.6"/><path d="M12 87l38-32m68 32L80 55" stroke="#d9adba" stroke-width="1.4"/><path d="M11 24L65 3l54 21-54 39L11 24Z" fill="#efd1d7" stroke="#bd8798" stroke-width="1.6"/><circle cx="65" cy="56" r="11" fill="#b77a8d"/><path d="M65 62c-5-3-8-6-8-10 0-4 5-6 8-2 3-4 8-2 8 2 0 4-3 7-8 10Z" fill="#fff9f3"/></svg>
         </div>
-        <h1 id="lockTitle">Mật mã<span>♡</span></h1>
+        <h1 id="lockTitle">Guess password<span>♡</span></h1>
         <div class="pass-dots" id="passDots" aria-label="Đã nhập 0 trên 4 số"><i></i><i></i><i></i><i></i></div>
         <div class="number-pad" id="numberPad" aria-label="Bàn phím mật mã">
           <button type="button" data-digit="1">1</button><button type="button" data-digit="2">2</button><button type="button" data-digit="3">3</button>
@@ -35,11 +35,61 @@
     </div>
   </section>
 
+  <svg class="party-symbols" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="partyBunny" viewBox="0 0 180 230">
+        <ellipse cx="90" cy="219" rx="57" ry="9" fill="#342746" opacity=".18"/>
+        <path d="M43 137c-9-40-8-77 3-91 15-16 29 7 33 70m27-1c5-68 20-90 34-75 13 15 10 55-4 98" fill="#fff9f3" stroke="#d7abc1" stroke-width="4"/>
+        <path d="M49 110c-5-39-4-53 1-58 6-5 12 14 16 60m59-1c5-44 11-57 17-54 6 5 3 27-3 58" fill="none" stroke="#f5c5d6" stroke-width="10" stroke-linecap="round"/>
+        <ellipse cx="90" cy="176" rx="48" ry="42" fill="#fff8f0" stroke="#d6a9bd" stroke-width="3"/>
+        <path d="M58 170c18 13 47 14 64 0" fill="none" stroke="#e8a3b9" stroke-width="12" stroke-linecap="round"/>
+        <ellipse cx="90" cy="116" rx="57" ry="53" fill="#fffaf4" stroke="#d7aec2" stroke-width="3"/>
+        <ellipse cx="61" cy="132" rx="13" ry="8" fill="#f6becb" opacity=".65"/><ellipse cx="120" cy="132" rx="13" ry="8" fill="#f6becb" opacity=".65"/>
+        <path d="M64 113c2-8 10-8 12 0m28 0c2-8 10-8 12 0" fill="none" stroke="#74516d" stroke-width="4" stroke-linecap="round"/>
+        <path d="M84 127c4-4 8-4 12 0l-6 5-6-5Zm6 5c-1 7-6 9-11 5m11-5c1 7 6 9 11 5" fill="#c9879b" stroke="#83576f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M75 68 102 16l35 65Z" fill="#c69bd2" stroke="#fff7e8" stroke-width="3" stroke-linejoin="round"/><path d="M93 34 115 73" stroke="#fff7e8" stroke-width="5" opacity=".7"/><circle cx="101" cy="17" r="8" fill="#ffe6a5"/>
+        <ellipse cx="48" cy="180" rx="15" ry="25" fill="#fffaf4" stroke="#d7aec2" stroke-width="3" transform="rotate(30 48 180)"/><ellipse cx="131" cy="170" rx="15" ry="26" fill="#fffaf4" stroke="#d7aec2" stroke-width="3" transform="rotate(-35 131 170)"/>
+        <ellipse cx="65" cy="211" rx="24" ry="12" fill="#fffaf4" stroke="#d7aec2" stroke-width="3"/><ellipse cx="115" cy="211" rx="24" ry="12" fill="#fffaf4" stroke="#d7aec2" stroke-width="3"/>
+      </symbol>
+      <symbol id="partyBear" viewBox="0 0 180 230">
+        <ellipse cx="90" cy="220" rx="57" ry="9" fill="#342746" opacity=".18"/>
+        <ellipse cx="90" cy="177" rx="51" ry="43" fill="#e9b998" stroke="#bd8b84" stroke-width="3"/>
+        <path d="M55 169c22 13 48 13 70 0" fill="none" stroke="#fff1da" stroke-width="12" stroke-linecap="round"/>
+        <circle cx="47" cy="80" r="23" fill="#e5b18f" stroke="#bd8b84" stroke-width="3"/><circle cx="133" cy="80" r="23" fill="#e5b18f" stroke="#bd8b84" stroke-width="3"/>
+        <circle cx="47" cy="80" r="11" fill="#f7d3bd"/><circle cx="133" cy="80" r="11" fill="#f7d3bd"/>
+        <ellipse cx="90" cy="119" rx="59" ry="55" fill="#efc6a6" stroke="#bd8b84" stroke-width="3"/>
+        <ellipse cx="65" cy="131" rx="12" ry="7" fill="#f7a9aa" opacity=".7"/><ellipse cx="117" cy="131" rx="12" ry="7" fill="#f7a9aa" opacity=".7"/>
+        <circle cx="68" cy="111" r="4" fill="#5b4555"/><circle cx="112" cy="111" r="4" fill="#5b4555"/>
+        <ellipse cx="90" cy="131" rx="19" ry="14" fill="#fff0d7"/><path d="M85 126q5-5 10 0l-5 5-5-5Z" fill="#725064"/><path d="M90 131q-3 10-12 5m12-5q3 10 12 5" fill="none" stroke="#725064" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M61 77 91 18l33 60Z" fill="#f4a6a9" stroke="#fff4dc" stroke-width="3" stroke-linejoin="round"/><path d="M80 48h22m-29 16h36" stroke="#fff6db" stroke-width="5" opacity=".8"/><circle cx="91" cy="17" r="8" fill="#fff2b7"/>
+        <ellipse cx="40" cy="174" rx="17" ry="27" fill="#efc6a6" stroke="#bd8b84" stroke-width="3" transform="rotate(33 40 174)"/><ellipse cx="140" cy="164" rx="17" ry="27" fill="#efc6a6" stroke="#bd8b84" stroke-width="3" transform="rotate(-35 140 164)"/>
+        <ellipse cx="63" cy="209" rx="24" ry="13" fill="#efc6a6" stroke="#bd8b84" stroke-width="3"/><ellipse cx="117" cy="209" rx="24" ry="13" fill="#efc6a6" stroke="#bd8b84" stroke-width="3"/>
+      </symbol>
+      <symbol id="partyKitty" viewBox="0 0 180 230">
+        <ellipse cx="92" cy="219" rx="58" ry="9" fill="#342746" opacity=".18"/>
+        <path d="M129 180c28-25 48-3 29 18" fill="none" stroke="#c6a7d5" stroke-width="17" stroke-linecap="round"/>
+        <ellipse cx="90" cy="178" rx="48" ry="41" fill="#d8bde1" stroke="#aa8bbd" stroke-width="3"/>
+        <path d="M60 171c16 10 44 12 61 0" fill="none" stroke="#fff4dc" stroke-width="12" stroke-linecap="round"/>
+        <path d="M35 99 44 42 76 70q15-6 29 0l31-28 9 58c12 17 11 40-4 56-27 28-75 28-102 0-15-15-17-41-4-57Z" fill="#e2cae7" stroke="#aa8bbd" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M48 57 67 76 45 89m76-13 16-18-2 31" fill="#f4b9cd"/>
+        <ellipse cx="60" cy="134" rx="12" ry="7" fill="#f6abc2" opacity=".7"/><ellipse cx="119" cy="134" rx="12" ry="7" fill="#f6abc2" opacity=".7"/>
+        <path d="M62 111q7-9 14 0m27 0q7-9 14 0" fill="none" stroke="#6b536d" stroke-width="4" stroke-linecap="round"/>
+        <path d="M84 125q6-5 12 0l-6 6-6-6Z" fill="#b67e9b"/><path d="M90 131q-5 9-12 4m12-4q5 9 12 4" fill="none" stroke="#74536e" stroke-width="2" stroke-linecap="round"/>
+        <path d="M61 75 90 18l34 59Z" fill="#e7c293" stroke="#fff6e3" stroke-width="3" stroke-linejoin="round"/><path d="M78 50h25m-30 15h39" stroke="#fff7e8" stroke-width="5" opacity=".75"/><circle cx="90" cy="17" r="8" fill="#ffe9b4"/>
+        <ellipse cx="43" cy="172" rx="15" ry="24" fill="#e2cae7" stroke="#aa8bbd" stroke-width="3" transform="rotate(30 43 172)"/><ellipse cx="136" cy="164" rx="15" ry="24" fill="#e2cae7" stroke="#aa8bbd" stroke-width="3" transform="rotate(-31 136 164)"/>
+        <ellipse cx="64" cy="210" rx="23" ry="12" fill="#e2cae7" stroke="#aa8bbd" stroke-width="3"/><ellipse cx="113" cy="210" rx="23" ry="12" fill="#e2cae7" stroke="#aa8bbd" stroke-width="3"/>
+      </symbol>
+    </defs>
+  </svg>
+
   <section class="cake-scene" id="cakeScene" hidden inert tabindex="-1" aria-labelledby="cakeTitle">
+    <div class="party-fireworks" aria-hidden="true"><i style="--x:14%;--y:20%;--delay:-1s;--spark:#ffe6a7"></i><i style="--x:83%;--y:18%;--delay:-3s;--spark:#f7bcd8"></i><i style="--x:9%;--y:58%;--delay:-5s;--spark:#d6c8ff"></i><i style="--x:92%;--y:53%;--delay:-2s;--spark:#ffe7c5"></i><i style="--x:51%;--y:7%;--delay:-4s;--spark:#f9d5d4"></i></div>
+    <div class="party-confetti" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <svg class="party-garland" viewBox="0 0 1200 170" preserveAspectRatio="none" aria-hidden="true"><path d="M-20 10Q300 162 600 65Q900 162 1220 10" fill="none" stroke="#ffedcf" stroke-width="3" opacity=".8"/><g stroke="#fff1dd" stroke-width="2"><path d="m55 35 25 14-25 36Z" fill="#e5a1bb"/><path d="m156 67 26 11-20 39Z" fill="#f5d492"/><path d="m263 91 24 7-17 40Z" fill="#bfa7d9"/><path d="m369 98 24 3-14 39Z" fill="#eeb4b5"/><path d="m473 85 25 0-11 40Z" fill="#f5d492"/><path d="m584 68 26 2-14 39Z" fill="#c6acd9"/><path d="m697 85 25 0-11 40Z" fill="#f5d492"/><path d="m803 98 24-3-8 40Z" fill="#eeb4b5"/><path d="m911 91 24-7-3 40Z" fill="#bfa7d9"/><path d="m1018 67 26-11 4 41Z" fill="#f5d492"/><path d="m1119 35 25-14 7 50Z" fill="#e5a1bb"/></g></svg>
     <div class="cake-haze" aria-hidden="true"></div>
     <div class="cake-stars" aria-hidden="true"><span>✦</span><span>✧</span><span>♡</span><span>✦</span><span>✧</span><span>✦</span></div>
     <div class="cake-content">
-      <h2 id="cakeTitle">Enjoy your birthday, Minu ♡</h2>
+      <h2 id="cakeTitle"><span>Happy Birthday</span><em>Minu ♡</em></h2>
       <div class="cake-stage" aria-hidden="true">
         <svg class="cake-art" viewBox="0 0 460 400" fill="none">
           <defs>
@@ -77,9 +127,11 @@
         <button class="candle-touch candle-touch-three" type="button" data-candle="three" aria-label="Tắt nến thứ ba"></button>
       </div>
     </div>
+    <div class="cake-critters" aria-hidden="true"><svg class="party-animal party-bunny" viewBox="0 0 180 230"><use href="#partyBunny"/></svg><svg class="party-animal party-bear" viewBox="0 0 180 230"><use href="#partyBear"/></svg></div>
   </section>
 
-  <section class="flower-scene" id="flowerScene" hidden inert tabindex="-1" aria-labelledby="flowerTitle">
+  <section class="flower-scene" id="flowerScene" hidden inert tabindex="-1" aria-labelledby="flowerTitle" aria-describedby="flowerWishes">
+    <div class="party-fireworks flower-fireworks" aria-hidden="true"><i style="--x:13%;--y:18%;--delay:-2s;--spark:#d08cad"></i><i style="--x:86%;--y:18%;--delay:-4s;--spark:#e8b27e"></i><i style="--x:24%;--y:43%;--delay:-1s;--spark:#c3a6d8"></i><i style="--x:77%;--y:45%;--delay:-5s;--spark:#db9eae"></i></div>
     <div class="flower-halo" aria-hidden="true"></div>
     <svg class="flower-garden" viewBox="0 0 1200 760" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <defs>
@@ -103,12 +155,19 @@
       <use href="#gardenRose" x="6" y="563" width="104" height="229" style="color:#e8aaa8"/><use href="#gardenDaisy" x="105" y="566" width="105" height="231" style="color:#ffefdd"/><use href="#gardenRose" x="200" y="574" width="99" height="218" style="color:#d9a2b9"/>
       <use href="#gardenDaisy" x="808" y="562" width="108" height="238" style="color:#fff0dd"/><use href="#gardenRose" x="914" y="560" width="103" height="227" style="color:#d99aae"/><use href="#gardenDaisy" x="1009" y="553" width="115" height="253" style="color:#f6ced4"/><use href="#gardenRose" x="1113" y="550" width="111" height="244" style="color:#e5aaa3"/>
     </svg>
+    <div class="flower-critters" aria-hidden="true">
+      <span class="flower-animal flower-bunny"><svg class="party-animal party-bunny" viewBox="0 0 180 230"><use href="#partyBunny"/></svg><i class="party-horn"></i></span>
+      <span class="flower-animal flower-kitty"><svg class="party-animal party-kitty" viewBox="0 0 180 230"><use href="#partyKitty"/></svg><i class="party-horn"></i></span>
+      <span class="flower-animal flower-bear"><svg class="party-animal party-bear" viewBox="0 0 180 230"><use href="#partyBear"/></svg><i class="party-horn"></i></span>
+    </div>
+    <div class="flower-speech" aria-hidden="true"><span class="animal-speech bunny-speech">Chúc chị MiNu ngày càng xinh đẹp ♡</span><span class="animal-speech kitty-speech">Mong chị lúc nào cũng cười thật tươi ✨</span><span class="animal-speech bear-speech">Tuổi mới bình an, thật nhiều niềm vui nhé! ♡</span></div>
+    <p class="visually-hidden" id="flowerWishes">Thỏ chúc chị MiNu ngày càng xinh đẹp. Mèo mong chị lúc nào cũng cười thật tươi. Gấu chúc chị tuổi mới bình an và thật nhiều niềm vui.</p>
     <div class="flower-petals" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
     <div class="flower-message">
       <span class="flower-message-star" aria-hidden="true">✦</span>
       <h2 id="flowerTitle">Happy Birthday<br><em>Minu ♡</em></h2>
-      <button id="flowerNext" type="button">Mở quà <span aria-hidden="true">→</span></button>
     </div>
+    <button id="flowerNext" class="flower-next" type="button">Mở quà <span aria-hidden="true">→</span></button>
   </section>
 
   <main class="birthday-page" id="birthdayPage" inert>

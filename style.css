@@ -242,10 +242,14 @@ body.locked{overflow:hidden}
 .letter-trigger:hover .letter-caption span{transform:translate(3px,-3px)}
 
 .letter-overlay{position:fixed;inset:0;z-index:30;display:grid;place-items:center;overflow:auto;padding:24px 15px}
+.letter-overlay{scrollbar-width:none;-ms-overflow-style:none}
+.letter-overlay::-webkit-scrollbar{display:none}
 .letter-overlay.closing .overlay-shade{animation:fade-out .38s both}
 .letter-overlay.closing .paper-sheet{animation:paper-close .38s cubic-bezier(.55,0,.8,.3) both}
 .overlay-shade{position:absolute;inset:0;background:#523d45c9;backdrop-filter:blur(8px);animation:fade-in .45s both}
 .paper-sheet{position:relative;width:min(100%,600px);max-height:min(90svh,820px);overflow:auto;padding:clamp(45px,7vw,70px) clamp(31px,7vw,70px) 82px;background:linear-gradient(110deg,#e9dfd02b 0,transparent 9%,transparent 88%,#d8c8b024 100%),repeating-linear-gradient(0deg,#fbf7ee 0 3px,#faf5eb 4px 7px);color:#514c5b;border:1px solid #e7dccb;border-radius:2px 5px 3px 2px;box-shadow:2px 3px 0 #e9decf,4px 6px 0 #d7c6b547,0 34px 80px #35212770,inset 0 0 45px #d0b89820;transform-origin:50% 85%;animation:paper-open .72s cubic-bezier(.19,1,.2,1) both}
+.paper-sheet{scrollbar-width:none;-ms-overflow-style:none}
+.paper-sheet::-webkit-scrollbar{display:none}
 .paper-sheet:focus{outline:none}
 .paper-sheet:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.35;background:radial-gradient(circle at 80% 12%,#e7d6bf5c,transparent 34%),radial-gradient(circle at 15% 82%,#e8d2c65c,transparent 40%)}
 .paper-sheet:after{content:"";position:absolute;top:0;bottom:0;left:clamp(16px,4vw,37px);width:1px;background:#cf9a9a42;pointer-events:none}
@@ -499,3 +503,93 @@ body.locked{overflow:hidden}
 }
 @media(max-width:380px){.gift-room{padding-top:128px}.gift-grid{gap:5px 8px}.gift-box{min-height:176px}.gift-art{width:128px;height:120px}.gift-body{height:76px}.gift-lid{top:23px}.gift-ribbon-v{top:24px}.gift-ribbon-h{top:34px}.gift-bow{--bow-scale:.75}}
 @media(prefers-reduced-motion:reduce){.dream-sky:before,.dream-sky:after,.dream-moon,.dream-halo,.dream-cloud,.dream-comet,.gift-art,.gift-box:after,.gift-body:after,.scorpio-constellation,.scorpio-thread,.scorpio-stars circle,.cake-scene:before{animation:none!important}.dream-comet{display:none}}
+
+/* Birthday parade */
+.party-symbols{position:absolute;width:0;height:0;overflow:hidden;pointer-events:none}
+.visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.lock-content h1{font-size:clamp(36px,7vw,53px);letter-spacing:-.045em;white-space:nowrap}
+.lock-content h1 span{font-size:.43em;vertical-align:11px}
+.cake-scene,.flower-scene{isolation:isolate}
+.cake-content{z-index:3}
+.cake-content h2{display:flex;align-items:center;flex-direction:column;gap:8px;font-size:clamp(49px,8vw,83px);line-height:.85;letter-spacing:-.045em}
+.cake-content h2 span{background:linear-gradient(100deg,#fffaf1 10%,#ffe8b9 36%,#fffefa 53%,#ffd4df 83%,#fffaf1);background-size:220% 100%;background-clip:text;-webkit-background-clip:text;color:transparent;filter:drop-shadow(0 3px 12px #432b59a1);animation:birthday-title-shine 5s ease-in-out infinite}
+.cake-content h2 em{display:block;margin-top:5px;color:#ffe5dc;font-size:.72em;font-style:normal;font-weight:400;text-shadow:0 2px 15px #4d315c,0 0 32px #ffdfdbad}
+@keyframes birthday-title-shine{50%{background-position:100% 0}}
+.cake-stage{width:min(84vw,410px);margin:12px auto -18px}
+.party-garland{position:absolute;z-index:2;left:0;top:0;width:100%;height:clamp(90px,16vh,155px);pointer-events:none;filter:drop-shadow(0 0 8px #ffead4a6);transform-origin:center top;animation:garland-sway 7s ease-in-out infinite}
+@keyframes garland-sway{50%{transform:rotate(1deg) translateY(4px)}}
+.party-fireworks{position:absolute;z-index:1;inset:0;overflow:hidden;pointer-events:none}
+.party-fireworks i{position:absolute;left:var(--x);top:var(--y);width:6px;height:6px;border-radius:50%;color:var(--spark,#ffe6b4);background:currentColor;box-shadow:0 -43px 0 currentColor,21px -37px 0 currentColor,37px -21px 0 currentColor,43px 0 0 currentColor,37px 21px 0 currentColor,21px 37px 0 currentColor,0 43px 0 currentColor,-21px 37px 0 currentColor,-37px 21px 0 currentColor,-43px 0 0 currentColor,-37px -21px 0 currentColor,-21px -37px 0 currentColor,0 0 16px 6px currentColor;opacity:0;transform:scale(.18) rotate(-15deg);animation:firework-bloom 6s ease-out var(--delay,0s) infinite}
+.party-fireworks i:after{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:0 -25px 0 currentColor,25px 0 0 currentColor,0 25px 0 currentColor,-25px 0 0 currentColor;transform:rotate(45deg);opacity:.7}
+@keyframes firework-bloom{0%,16%,100%{opacity:0;transform:scale(.15) rotate(-15deg)}22%{opacity:1}37%{opacity:.9;transform:scale(1.12) rotate(15deg)}48%{opacity:0;transform:scale(1.38) rotate(25deg)}}
+.flower-fireworks{z-index:1}
+.flower-fireworks i{width:5px;height:5px;filter:drop-shadow(0 0 5px currentColor)}
+.party-confetti{position:absolute;z-index:4;inset:0;overflow:hidden;pointer-events:none}
+.party-confetti i{position:absolute;left:var(--confetti-x);top:-12%;width:9px;height:16px;border-radius:2px;background:var(--confetti-color);opacity:0;animation:party-confetti-fall var(--confetti-time,8s) linear var(--confetti-delay,0s) infinite}
+.party-confetti i:nth-child(1){--confetti-x:3%;--confetti-color:#ffe4a2;--confetti-delay:-2s;--confetti-time:8s}.party-confetti i:nth-child(2){--confetti-x:10%;--confetti-color:#f9b6ce;--confetti-delay:-6s;--confetti-time:10s}.party-confetti i:nth-child(3){--confetti-x:17%;--confetti-color:#d3bcf1;--confetti-delay:-4s;--confetti-time:9s}.party-confetti i:nth-child(4){--confetti-x:25%;--confetti-color:#fff4d1;--confetti-delay:-9s;--confetti-time:11s}.party-confetti i:nth-child(5){--confetti-x:32%;--confetti-color:#eaa9bf;--confetti-delay:-1s;--confetti-time:7s}.party-confetti i:nth-child(6){--confetti-x:40%;--confetti-color:#ffe1a4;--confetti-delay:-7s;--confetti-time:10s}.party-confetti i:nth-child(7){--confetti-x:48%;--confetti-color:#d8c4fa;--confetti-delay:-4s;--confetti-time:8s}.party-confetti i:nth-child(8){--confetti-x:56%;--confetti-color:#f6bfd1;--confetti-delay:-3s;--confetti-time:11s}.party-confetti i:nth-child(9){--confetti-x:64%;--confetti-color:#fff0be;--confetti-delay:-8s;--confetti-time:9s}.party-confetti i:nth-child(10){--confetti-x:71%;--confetti-color:#c9b0e5;--confetti-delay:-5s;--confetti-time:10s}.party-confetti i:nth-child(11){--confetti-x:79%;--confetti-color:#ffe4a2;--confetti-delay:-10s;--confetti-time:12s}.party-confetti i:nth-child(12){--confetti-x:86%;--confetti-color:#f4b4ca;--confetti-delay:-2s;--confetti-time:9s}.party-confetti i:nth-child(13){--confetti-x:94%;--confetti-color:#ddd2ff;--confetti-delay:-6s;--confetti-time:11s}.party-confetti i:nth-child(14){--confetti-x:22%;--confetti-color:#f7dc97;--confetti-delay:-5s;--confetti-time:12s}.party-confetti i:nth-child(15){--confetti-x:60%;--confetti-color:#f5a9bc;--confetti-delay:-8s;--confetti-time:10s}.party-confetti i:nth-child(16){--confetti-x:89%;--confetti-color:#fff6df;--confetti-delay:-11s;--confetti-time:13s}
+@keyframes party-confetti-fall{5%{opacity:.8}85%{opacity:.75}100%{opacity:0;transform:translate3d(62px,120svh,0) rotate(660deg)}}
+.cake-critters{position:absolute;z-index:2;left:0;right:0;bottom:clamp(5px,4vh,44px);display:flex;justify-content:space-between;align-items:flex-end;padding:0 clamp(18px,5vw,90px);pointer-events:none}
+.party-animal{display:block;width:clamp(105px,15vw,180px);height:auto;overflow:visible;filter:drop-shadow(0 15px 15px #38294a7d);transform-origin:50% 95%;animation:animal-cheer 2.1s ease-in-out infinite}
+.party-bear{animation-delay:-1s}.party-kitty{animation-delay:-.55s}
+@keyframes animal-cheer{0%,100%{transform:translateY(0) rotate(-4deg)}45%{transform:translateY(-14px) rotate(4deg)}70%{transform:translateY(-3px) rotate(-2deg)}}
+.flower-garden{z-index:1;filter:drop-shadow(0 16px 12px #79567066) saturate(1.08)}
+.flower-critters{position:absolute;z-index:2;left:0;right:0;bottom:clamp(10px,8vh,70px);display:flex;justify-content:space-around;align-items:flex-end;padding:0 max(10px,5vw);pointer-events:none}
+.flower-critters .party-animal{width:clamp(104px,14vw,165px);filter:drop-shadow(0 11px 12px #77547777)}
+.flower-critters .party-kitty{transform:scale(.92)}
+.flower-message{z-index:3}
+.flower-message h2{filter:drop-shadow(0 0 13px #fff7e0);animation:flower-title-glow 4s ease-in-out infinite}
+@keyframes flower-title-glow{50%{filter:drop-shadow(0 0 27px #fff8df)}}
+.flower-message-star{font-size:29px;color:#d59da9;animation:star-party 3s ease-in-out infinite}
+@keyframes star-party{50%{transform:rotate(90deg) scale(1.24);opacity:.6}}
+.flower-message button{position:relative;z-index:4}
+@media(max-width:650px){
+  .lock-content h1{font-size:clamp(35px,8.4vw,44px)}
+  .cake-content{padding:72px 12px 26px}
+  .cake-content h2{font-size:clamp(46px,10vw,60px)}
+  .cake-stage{width:min(82vw,365px);margin:14px auto 10px}
+  .party-garland{height:95px}
+  .cake-critters{bottom:4px;padding:0 4px}
+  .cake-critters .party-animal{width:clamp(86px,22vw,112px)}
+  .flower-critters{bottom:9%;padding:0 2px}
+  .flower-critters .party-animal{width:clamp(86px,24vw,112px)}
+  .flower-message{margin-top:-17vh}
+  .flower-message h2{font-size:clamp(49px,11.5vw,66px)}
+  .party-fireworks i{width:4px;height:4px}
+}
+@media(max-height:650px){.cake-content{padding-top:67px}.cake-stage{width:min(72vw,330px)}.cake-critters .party-animal{width:90px}.flower-critters{bottom:4%}}
+@media(prefers-reduced-motion:reduce){.party-garland,.party-fireworks i,.party-confetti i,.party-animal,.cake-content h2 span,.flower-message h2,.flower-message-star{animation:none!important}.party-confetti{display:none}.party-fireworks i{opacity:.5;transform:scale(.5)}}
+
+/* Party horns peek out from behind the flower bed. */
+.flower-garden{z-index:2}
+.flower-message{margin-top:-23vh}
+.flower-critters{z-index:1;bottom:clamp(235px,38vh,315px);padding:0 max(8px,4vw)}
+.flower-animal{position:relative;display:block;width:clamp(105px,14vw,165px);flex:0 0 auto;transform-origin:50% 90%;animation:animal-cheer 2.1s ease-in-out infinite}
+.flower-animal:nth-child(2){animation-delay:-.65s}.flower-animal:nth-child(3){animation-delay:-1.3s}
+.flower-animal .party-animal{width:100%;animation:none;filter:drop-shadow(0 10px 10px #75537669)}
+.party-horn{position:absolute;z-index:2;left:52%;top:56%;width:49%;height:12px;border:2px solid #fff9e8;border-radius:8px 16px 16px 8px;background:repeating-linear-gradient(90deg,#fff5d8 0 10px,#eea9c4 10px 18px,#c9b0e4 18px 26px);box-shadow:0 3px 7px #85607b70,0 0 9px #fff7ea;transform-origin:left center;animation:horn-blow 2.1s ease-in-out infinite}
+.party-horn:before{content:"";position:absolute;left:-7px;top:-4px;width:10px;height:15px;border-radius:50%;background:#fff2dc;border:2px solid #cb8fa9}
+.party-horn:after{content:"";position:absolute;right:-9px;top:-6px;width:13px;height:19px;border-radius:50%;background:#ffe1a7;border:2px solid #fff9e8;box-shadow:0 0 7px #fff4cc}
+.flower-kitty{top:25px}
+.flower-kitty .party-horn{animation-delay:-.65s;top:55%}
+.flower-bear .party-horn{animation-name:horn-blow-left;animation-delay:-1.3s;left:48%;top:56%}
+@keyframes horn-blow{0%,15%,70%,100%{transform:rotate(-10deg) scaleX(.18)}28%,52%{transform:rotate(-15deg) scaleX(1.08)}}
+@keyframes horn-blow-left{0%,15%,70%,100%{transform:rotate(10deg) scaleX(-.18)}28%,52%{transform:rotate(15deg) scaleX(-1.08)}}
+@media(min-width:651px){.flower-kitty{left:-22vw}}
+@media(max-width:650px){.flower-message{margin-top:-27vh}.flower-critters{bottom:clamp(185px,31vh,225px);padding:0 2px}.flower-animal{width:clamp(88px,23vw,112px)}.party-horn{height:9px;border-width:1px}.party-horn:before{top:-4px}.party-horn:after{top:-6px}}
+@media(max-height:650px){.flower-critters{bottom:195px}}
+@media(prefers-reduced-motion:reduce){.flower-animal,.party-horn{animation:none!important}.party-horn{transform:rotate(-12deg) scaleX(.8)}.flower-bear .party-horn{transform:rotate(12deg) scaleX(-.8)}}
+
+/* Each wish appears in turn above its cheering animal. */
+@keyframes garden-grow{from{opacity:0;transform:translateY(100px) scale(1.05)}to{opacity:1;transform:translateY(28px) scale(1)}}
+.flower-speech{position:absolute;z-index:4;inset:0;pointer-events:none}
+.animal-speech{position:absolute;top:clamp(42px,8vh,70px);display:grid;place-items:center;width:clamp(166px,18vw,225px);min-height:66px;padding:11px 15px;border:1px solid #e6b9ca;border-radius:19px;background:linear-gradient(145deg,#fffdf8f7,#fff2f5f2);box-shadow:0 10px 28px #8c6b8952,0 0 20px #fffaf4;color:#8b5974;font:600 clamp(12px,1.1vw,15px)/1.35 "DM Sans",sans-serif;text-align:center;opacity:0;transform-origin:50% 100%;animation:speech-bubble 9s ease-in-out var(--speech-delay,0s) infinite both}
+.animal-speech:after{content:"";position:absolute;left:50%;bottom:-8px;width:13px;height:13px;border-right:1px solid #e6b9ca;border-bottom:1px solid #e6b9ca;background:#fff4f6;transform:translateX(-50%) rotate(45deg)}
+.bunny-speech{left:4%;--speech-delay:0s}.kitty-speech{left:25%;--speech-delay:3s}.bear-speech{right:4%;--speech-delay:6s}
+@keyframes speech-bubble{0%,4%,34%,100%{opacity:0;transform:translateY(12px) scale(.78)}10%,28%{opacity:1;transform:translateY(0) scale(1)}}
+#flowerNext{position:absolute;z-index:5;left:50%;bottom:max(18px,env(safe-area-inset-bottom));min-width:134px;padding:12px 26px;border:1px solid #bf8fa7;border-radius:999px;background:#fffaf4ed;color:#985f7d;font:700 13px "DM Sans",sans-serif;box-shadow:0 12px 27px #7d587849,0 0 16px #fff9e79c;transform:translateX(-50%);transition:transform .25s,background .25s,box-shadow .25s}
+#flowerNext span{display:inline-block;margin-left:7px;font-size:18px;vertical-align:-1px}
+#flowerNext:hover{transform:translate(-50%,-4px);background:#fff;box-shadow:0 16px 30px #7d58785e,0 0 24px #fff9e7}
+#flowerNext:focus-visible{outline:3px solid #a86d86;outline-offset:4px}
+@media(min-width:651px){.flower-message{margin-top:-33vh}}
+@media(max-width:650px){.animal-speech{top:clamp(26px,5vh,44px);width:150px;min-height:64px;padding:8px 10px;font-size:12px}.bunny-speech{left:2%}.kitty-speech{left:50%;translate:-50% 0}.bear-speech{right:2%}#flowerNext{bottom:max(14px,env(safe-area-inset-bottom));padding:10px 24px}}
+@media(prefers-reduced-motion:reduce){.animal-speech{animation:none!important}.bunny-speech{opacity:1;transform:none}}
