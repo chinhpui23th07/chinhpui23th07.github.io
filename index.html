@@ -22,9 +22,7 @@
         <div class="lock-emblem" aria-hidden="true">
           <svg viewBox="0 0 130 94" fill="none"><path d="M12 25h106v62H12z" fill="#fff9f3" stroke="#bd8798" stroke-width="1.6"/><path d="M12 25l53 40 53-40" stroke="#bd8798" stroke-width="1.6"/><path d="M12 87l38-32m68 32L80 55" stroke="#d9adba" stroke-width="1.4"/><path d="M11 24L65 3l54 21-54 39L11 24Z" fill="#efd1d7" stroke="#bd8798" stroke-width="1.6"/><circle cx="65" cy="56" r="11" fill="#b77a8d"/><path d="M65 62c-5-3-8-6-8-10 0-4 5-6 8-2 3-4 8-2 8 2 0 4-3 7-8 10Z" fill="#fff9f3"/></svg>
         </div>
-        <p class="lock-kicker">MỘT MÓN QUÀ NHỎ</p>
         <h1 id="lockTitle">Mật mã<span>♡</span></h1>
-        <p class="lock-intro">Một góc nhỏ dành riêng cho MiNu</p>
         <div class="pass-dots" id="passDots" aria-label="Đã nhập 0 trên 4 số"><i></i><i></i><i></i><i></i></div>
         <div class="number-pad" id="numberPad" aria-label="Bàn phím mật mã">
           <button type="button" data-digit="1">1</button><button type="button" data-digit="2">2</button><button type="button" data-digit="3">3</button>
@@ -78,7 +76,6 @@
         <button class="candle-touch candle-touch-two" type="button" data-candle="two" aria-label="Tắt nến thứ hai"></button>
         <button class="candle-touch candle-touch-three" type="button" data-candle="three" aria-label="Tắt nến thứ ba"></button>
       </div>
-      <p class="cake-hint">Chạm vào từng ngọn nến để gửi một điều ước ✦</p>
     </div>
   </section>
 
@@ -151,8 +148,6 @@
             </span>
           </button>
         </div>
-        <p class="album-guide" id="albumGuide">Chạm vào cuốn album để lật trang</p>
-        <p class="album-count" id="albumCount" aria-live="polite"></p>
       </div>
       <div class="gift-view music-view" id="musicView" hidden>
         <h2 id="musicTitle">Song for Minu ♡</h2>
@@ -174,7 +169,19 @@
 
   <div class="letter-overlay" id="letterOverlay" hidden>
     <div class="overlay-shade" id="overlayShade"></div>
-    <section class="paper-sheet" role="dialog" aria-modal="true" aria-labelledby="letterTitle" tabindex="-1" id="paperSheet">
+    <section class="envelope-stage" id="envelopeStage" role="dialog" aria-modal="true" aria-label="Phong bì thư" tabindex="-1">
+      <button class="envelope-close" id="closeEnvelope" type="button" aria-label="Đóng phong bì">×</button>
+      <button class="vintage-envelope" id="openEnvelope" type="button" aria-label="Mở phong bì thư">
+        <span class="vintage-envelope-back" aria-hidden="true"></span>
+        <span class="vintage-letter-peek" aria-hidden="true"></span>
+        <span class="vintage-envelope-front" aria-hidden="true"></span>
+        <span class="vintage-envelope-flap" aria-hidden="true"></span>
+        <span class="vintage-postmark" aria-hidden="true"></span>
+        <span class="vintage-stamp" aria-hidden="true">✿</span>
+        <span class="vintage-wax-seal" aria-hidden="true">♡</span>
+      </button>
+    </section>
+    <section class="paper-sheet" role="dialog" aria-modal="true" aria-labelledby="letterTitle" tabindex="-1" id="paperSheet" hidden>
       <button class="close-letter" id="closeLetter" type="button" aria-label="Đóng lá thư">×</button>
       <div class="paper-lines">
         <h2 id="letterTitle">Chúc mừng sinh nhật MiNu</h2>
@@ -213,8 +220,6 @@
     const albumBackFace=$('#albumBackFace');
     const albumBackdrop=$('#albumBackdrop');
     const albumImage=$('#albumImage');
-    const albumGuide=$('#albumGuide');
-    const albumCount=$('#albumCount');
     const musicView=$('#musicView');
     const giftAudio=$('#giftAudio');
     const musicPlay=$('#musicPlay');
@@ -223,6 +228,8 @@
     const message=$('#lockMessage');
     const trigger=$('#openLetter');
     const overlay=$('#letterOverlay');
+    const envelopeStage=$('#envelopeStage');
+    const envelopeButton=$('#openEnvelope');
     const paper=$('#paperSheet');
     const fold=$('#foldNote');
     const postscript=$('#postscript');
@@ -232,7 +239,7 @@
     const letterTextElements=[...document.querySelectorAll('.paper-lines h2, .paper-lines p')];
     const prefersLessMotion=matchMedia('(prefers-reduced-motion: reduce)');
     const storageKey='minu-birthday-unlocked-v1';
-    let entered='',busy=false,opening=false,closing=false,writeRun=0,candlesOut=0,giftBusy=false,activeGift=null,flowerLeaving=false,fxAudio=null;
+    let entered='',busy=false,opening=false,closing=false,envelopeOpening=false,letterRun=0,writeRun=0,candlesOut=0,giftBusy=false,activeGift=null,flowerLeaving=false,fxAudio=null;
     const albumPhotos=[
       'assets/minu-01.jpg','assets/minu-02.jpg','assets/minu-03.jpg','assets/minu-04.jpg',
       'assets/minu-05.jpg','assets/minu-06.jpg','assets/minu-07.jpg','assets/minu-08.jpg','assets/minu-09.jpg'
@@ -247,8 +254,6 @@
       albumBackFace.hidden=!isBack;
       albumBook.dataset.page=isCover?'cover':isBack?'back':'photo';
       albumBook.setAttribute('aria-label',isCover?'Mở album':isBack?'Xem lại bìa trước':albumIndex===albumPhotos.length-1?'Lật tới bìa sau':`Lật sang ảnh ${albumIndex+2}`);
-      albumGuide.textContent=isCover?'Chạm vào cuốn album để mở':isBack?'Chạm để trở về bìa trước':'Chạm vào ảnh để lật trang tiếp theo';
-      albumCount.textContent=isCover?'':isBack?'Hết album ♡':`${String(albumIndex+1).padStart(2,'0')} / ${String(albumPhotos.length).padStart(2,'0')}`;
       if(!isCover&&!isBack){
         const src=albumPhotos[albumIndex];
         albumImage.src=src;
@@ -561,28 +566,63 @@
     function showLetter(){
       if(opening||closing||!overlay.hidden)return;
       opening=true;
+      const run=++letterRun;
       trigger.classList.add('opening');
       setTimeout(()=>{
+        if(run!==letterRun)return;
         overlay.hidden=false;
         overlay.classList.remove('closing');
+        envelopeStage.hidden=false;
+        envelopeStage.classList.remove('revealing');
+        envelopeButton.classList.remove('opening');
+        envelopeOpening=false;
+        paper.hidden=true;
+        paper.classList.remove('from-envelope','writing');
+        fold.setAttribute('aria-expanded','false');
+        fold.setAttribute('aria-label','Mở lời nhắn ở góc thư');
+        postscript.hidden=true;
         page.inert=true;
         document.body.style.overflow='hidden';
-        paper.focus({preventScroll:true});
-        paper.classList.remove('writing');
-        void paper.offsetWidth;
-        paper.scrollTop=0;
-        writeLetter();
+        envelopeButton.focus({preventScroll:true});
         opening=false;
       },prefersLessMotion.matches?20:720);
+    }
+    function openVintageEnvelope(){
+      if(overlay.hidden||envelopeStage.hidden||envelopeOpening||closing)return;
+      envelopeOpening=true;
+      const run=letterRun;
+      envelopeButton.classList.add('opening');
+      setTimeout(()=>{
+        if(run!==letterRun)return;
+        paper.hidden=false;
+        paper.classList.add('from-envelope');
+        envelopeStage.classList.add('revealing');
+        paper.scrollTop=0;
+        paper.focus({preventScroll:true});
+        setTimeout(()=>{
+          if(run!==letterRun)return;
+          envelopeStage.hidden=true;
+          envelopeStage.classList.remove('revealing');
+          paper.classList.remove('from-envelope');
+          writeLetter();
+        },prefersLessMotion.matches?20:820);
+      },prefersLessMotion.matches?20:1500);
     }
     function closeLetter(){
       if(overlay.hidden||closing)return;
       closing=true;
+      letterRun++;
       stopWriting();
       overlay.classList.add('closing');
       setTimeout(()=>{
         overlay.hidden=true;
         overlay.classList.remove('closing');
+        envelopeStage.hidden=false;
+        envelopeStage.classList.remove('revealing');
+        envelopeButton.classList.remove('opening');
+        envelopeOpening=false;
+        paper.hidden=true;
+        paper.classList.remove('from-envelope','writing');
         page.inert=false;
         document.body.style.overflow='';
         trigger.classList.remove('opening');
@@ -591,6 +631,8 @@
       },prefersLessMotion.matches?20:380);
     }
     trigger.addEventListener('click',showLetter);
+    envelopeButton.addEventListener('click',openVintageEnvelope);
+    $('#closeEnvelope').addEventListener('click',closeLetter);
     $('#closeLetter').addEventListener('click',closeLetter);
     $('#overlayShade').addEventListener('click',closeLetter);
     fold.addEventListener('click',()=>{

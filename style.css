@@ -284,18 +284,36 @@ body.locked{overflow:hidden}
 @media(max-height:700px){.birthday-card{padding-top:20px;padding-bottom:20px}.birthday-card h1{font-size:clamp(62px,11vw,100px)}.title-rule{margin-top:18px}.envelope{width:154px;height:103px}.letter-trigger{gap:8px}.cake-stage{width:min(82vw,380px)}.lock-screen{place-items:start center}.lock-emblem{width:96px;height:75px;margin-bottom:8px}.lock-emblem svg{width:94px}.lock-heart{margin:auto 0}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.floating-notes,.lock-sparkles,.cake-stars,.cake-confetti,.writing-pen{display:none}.paper-sheet.writing .ink-word:not(.written){clip-path:none}.paper-sheet.writing .letter-signature{opacity:1}.paper-sheet.writing .signature-flourish path{stroke-dashoffset:0}}
 
-.lock-kicker{margin:3px 0 8px;color:#a67487;font-size:10px;font-weight:700;letter-spacing:.28em}
-.lock-intro{margin:11px 0 0;color:#946e7c;font-size:12px;line-height:1.45}
 .lock-heart{box-shadow:0 34px 80px #4c304680,0 0 0 8px #fff5eb1c,inset 0 0 38px #fffdfacc}
-.cake-stage{margin-bottom:0}
-.cake-hint{margin:4px 0 0;color:#ffe9e4;font-size:12px;font-weight:500;letter-spacing:.035em;text-shadow:0 2px 8px #503b5a66}
 .album-cover-photo{position:absolute;z-index:2;top:12%;left:50%;display:block;width:43%;aspect-ratio:1;overflow:hidden;border:6px solid #fffaf3;border-radius:2px;background:#f4d9d8;box-shadow:0 9px 18px #573b5366;transform:translateX(-50%) rotate(-5deg)}
 .album-cover-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 34%}
 .album-cover-title{top:56%}
 .album-cover-mark{top:76%}
-.album-stage{padding-bottom:8px}
 .album-photo:after{content:"";position:absolute;z-index:2;top:-5px;left:50%;width:60px;height:17px;background:#fff4dfb8;box-shadow:0 1px 2px #6f576332;transform:translateX(-50%) rotate(-3deg);pointer-events:none}
-.album-guide{margin:9px 0 3px;color:#8d687b;font-size:12px;font-weight:600}
-.album-count{min-height:15px;margin:0;color:#a87b8c;font-size:11px;font-weight:700;letter-spacing:.2em}
-@media(max-width:650px){.lock-emblem{margin-bottom:5px}.pass-dots{margin-top:19px}}
-@media(max-height:700px){.cake-hint{margin-top:0}}
+
+.envelope-stage{position:relative;z-index:1;display:grid;place-items:center;width:min(100%,620px);min-height:min(72svh,460px);animation:paper-open .6s cubic-bezier(.2,.8,.2,1) both}
+.envelope-stage.revealing{animation:envelope-stage-away .82s ease-in both}
+@keyframes envelope-stage-away{to{opacity:0;transform:translateY(55px) scale(.9)}}
+.envelope-close{position:absolute;z-index:9;right:5%;top:4%;display:grid;place-items:center;width:38px;height:38px;border:1px solid #e5d2c4;border-radius:50%;background:#fbf5ed;color:#966e72;font-size:26px;line-height:1;box-shadow:0 4px 10px #3d283728}
+.vintage-envelope{position:relative;display:block;width:min(82vw,450px);aspect-ratio:1.48;padding:0;border:0;background:transparent;filter:drop-shadow(0 25px 24px #2e253d73);perspective:1000px;transform:rotate(-3deg);transition:transform .3s ease,filter .3s ease}
+.vintage-envelope:hover:not(.opening),.vintage-envelope:focus-visible:not(.opening){filter:drop-shadow(0 30px 26px #2e253d80);transform:translateY(-7px) rotate(-2deg)}
+.vintage-envelope:focus-visible{outline:3px solid #fff7eb;outline-offset:10px;border-radius:6px}
+.vintage-envelope-back{position:absolute;z-index:1;inset:0;border:2px solid #a98a72;border-radius:5px;background:radial-gradient(circle at 26% 20%,#fff8e6b8,transparent 48%),repeating-linear-gradient(0deg,#ead8bd 0 3px,#e7d2b4 4px 6px);box-shadow:inset 0 0 24px #a87a563d}
+.vintage-letter-peek{position:absolute;z-index:2;top:16%;left:10%;width:80%;height:69%;border:1px solid #d4bda0;border-radius:3px;background:repeating-linear-gradient(0deg,#fffaf0 0 5px,#f8f0e3 6px 9px);box-shadow:0 4px 11px #6e514137;transition:transform 1.42s .38s cubic-bezier(.2,.75,.22,1)}
+.vintage-letter-peek:before{content:"";position:absolute;inset:12% 9%;border-top:1px solid #c69b9d6b;border-bottom:1px solid #c69b9d45}
+.vintage-letter-peek:after{content:"♡";position:absolute;left:50%;top:43%;color:#c69296;font:28px "Cormorant Garamond",Georgia,serif;transform:translateX(-50%)}
+.vintage-envelope-front{position:absolute;z-index:3;inset:0;border-radius:5px;background:linear-gradient(145deg,#f0dfc5,#d9bc98 85%);clip-path:polygon(0 24%,50% 67%,100% 24%,100% 100%,0 100%);box-shadow:inset 0 -14px 22px #9c745249}
+.vintage-envelope-front:after{content:"";position:absolute;inset:0;background:linear-gradient(50deg,transparent 48%,#f8e9d3a8 49%,transparent 50%),linear-gradient(130deg,transparent 48%,#b9997955 49%,transparent 50%);opacity:.65}
+.vintage-envelope-flap{position:absolute;z-index:5;inset:0;border-radius:5px;background:linear-gradient(155deg,#f4e6d0,#dec4a4 70%,#caa988);clip-path:polygon(0 0,100% 0,50% 69%);transform-origin:50% 0;backface-visibility:hidden;transition:transform .82s cubic-bezier(.2,.7,.2,1)}
+.vintage-postmark{position:absolute;z-index:6;top:11%;right:21%;width:72px;height:72px;border:2px solid #8b6f6252;border-radius:50%;transform:rotate(-17deg);pointer-events:none}
+.vintage-postmark:after{content:"";position:absolute;left:-38px;top:35%;width:125px;height:24px;border-top:2px solid #8b6f6245;border-bottom:2px solid #8b6f6245;transform:rotate(9deg)}
+.vintage-stamp{position:absolute;z-index:7;right:7%;top:7%;display:grid;place-items:center;width:58px;height:68px;border:3px dotted #b48f75;background:linear-gradient(#fff8e9,#efe3cd);color:#ad7c85;font-size:29px;box-shadow:0 0 0 3px #f8edd8,0 5px 10px #6a4f423b;transform:rotate(8deg)}
+.vintage-wax-seal{position:absolute;z-index:8;left:50%;top:62%;display:grid;place-items:center;width:66px;height:66px;border:2px solid #e4a5a0;border-radius:47% 53% 50% 45%;background:radial-gradient(circle at 33% 25%,#df9990,#bd6970 57%,#934c5e);box-shadow:inset 0 0 0 4px #a7536166,0 7px 12px #71514f77;color:#fff2dc;font:32px/1 "Cormorant Garamond",Georgia,serif;transform:translate(-50%,-50%) rotate(8deg);transition:opacity .25s,transform .35s}
+.vintage-envelope.opening .vintage-envelope-flap{transform:rotateX(180deg)}
+.vintage-envelope.opening .vintage-letter-peek{transform:translateY(-83%)}
+.vintage-envelope.opening .vintage-wax-seal{opacity:0;transform:translate(-50%,-50%) scale(.65)}
+.paper-sheet.from-envelope{animation:letter-sheet-emerge .82s cubic-bezier(.16,.82,.2,1) both}
+@keyframes letter-sheet-emerge{from{opacity:0;transform:translateY(100px) scale(.62)}to{opacity:1;transform:translateY(0) scale(1)}}
+.letter-overlay.closing .envelope-stage{animation:fade-out .38s both}
+@media(max-width:600px){.envelope-stage{min-height:340px}.vintage-envelope{width:min(84vw,380px)}.envelope-close{right:1%;top:0}}
+@media(max-height:700px){.envelope-stage{min-height:280px}}
