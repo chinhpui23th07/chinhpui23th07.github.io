@@ -201,6 +201,7 @@
       <button class="fold-note" id="foldNote" type="button" aria-label="Mở lời nhắn ở góc thư" aria-controls="postscript" aria-expanded="false"><span>P.S.</span></button>
     </section>
   </div>
+  <audio id="backgroundMusic" src="assets/birthday-ambient.mp3" loop preload="none" aria-hidden="true"></audio>
   <script>
   (()=>{
     const $=selector=>document.querySelector(selector);
@@ -222,6 +223,7 @@
     const albumImage=$('#albumImage');
     const musicView=$('#musicView');
     const giftAudio=$('#giftAudio');
+    const backgroundMusic=$('#backgroundMusic');
     const musicPlay=$('#musicPlay');
     const musicReplay=$('#musicReplay');
     const dots=[...document.querySelectorAll('#passDots i')];
@@ -239,7 +241,23 @@
     const letterTextElements=[...document.querySelectorAll('.paper-lines h2, .paper-lines p')];
     const prefersLessMotion=matchMedia('(prefers-reduced-motion: reduce)');
     const storageKey='minu-birthday-unlocked-v1';
-    let entered='',busy=false,opening=false,closing=false,envelopeOpening=false,letterRun=0,writeRun=0,candlesOut=0,giftBusy=false,activeGift=null,flowerLeaving=false,fxAudio=null;
+    let entered='',busy=false,opening=false,closing=false,envelopeOpening=false,letterRun=0,writeRun=0,candlesOut=0,giftBusy=false,activeGift=null,flowerLeaving=false,fxAudio=null,backgroundPausedForSong=false;
+    backgroundMusic.volume=.35;
+    function playBackgroundMusic(fromUnlock=false){
+      if(backgroundPausedForSong||document.hidden||(!fromUnlock&&!lock.hidden))return;
+      if(backgroundMusic.paused)backgroundMusic.play().catch(()=>{});
+    }
+    // Browsers may block playback after a restored session until the next gesture.
+    document.addEventListener('pointerdown',event=>{
+      if(!event.target.closest('.gift-music'))playBackgroundMusic();
+    },{capture:true});
+    document.addEventListener('keydown',event=>{
+      if(!event.target.closest?.('.gift-music'))playBackgroundMusic();
+    },{capture:true});
+    document.addEventListener('visibilitychange',()=>{
+      if(document.hidden)backgroundMusic.pause();
+      else playBackgroundMusic();
+    });
     const albumPhotos=[
       'assets/album-01.jpg','assets/album-02.jpg','assets/album-03.jpg','assets/album-04.jpg',
       'assets/album-05.jpg','assets/album-06.jpg','assets/album-07.jpg','assets/album-08.jpg','assets/album-09.jpg'
@@ -441,6 +459,7 @@
       lock.hidden=true;
       cake.hidden=false;
       cake.inert=false;
+      playBackgroundMusic();
       requestAnimationFrame(()=>cake.classList.add('lit'));
       cake.focus({preventScroll:true});
     }
@@ -508,6 +527,10 @@
       if(giftBusy||!giftOverlay.hidden)return;
       giftBusy=true;
       activeGift=button;
+      if(button.dataset.gift==='music'){
+        backgroundPausedForSong=true;
+        backgroundMusic.pause();
+      }
       button.classList.add('opening');
       setTimeout(()=>{
         const isAlbum=button.dataset.gift==='album';
@@ -526,6 +549,10 @@
       if(giftOverlay.hidden||giftBusy)return;
       giftBusy=true;
       giftAudio.pause();
+      if(activeGift?.dataset.gift==='music'){
+        backgroundPausedForSong=false;
+        playBackgroundMusic();
+      }
       giftOverlay.classList.add('closing');
       setTimeout(()=>{
         giftOverlay.hidden=true;
@@ -587,6 +614,7 @@
     });
     function unlock(){
       busy=true;
+      playBackgroundMusic(true);
       message.textContent='Chúc mừng sinh nhật, Minu ♡';
       try{sessionStorage.setItem(storageKey,'open')}catch{}
       lock.classList.add('unlocking');
