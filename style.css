@@ -283,3 +283,19 @@ body.locked{overflow:hidden}
 @media(max-width:600px){.birthday-page:before{width:120vw}.birthday-page:after{width:100vw}.birthday-card{padding:30px 15px 40px}.birthday-card h1{font-size:clamp(68px,17vw,95px)}.envelope{width:175px;height:117px}.paper-sheet{max-height:88svh;padding:47px 31px 76px}.paper-lines{font-size:clamp(17px,4.6vw,19px)}.letter-signature{width:175px;margin-right:0}.signature-mark{font-size:49px}.fold-note{margin-right:-25px}.lock-heart{padding:14px}.lock-content{padding:20px 9px 8px}}
 @media(max-height:700px){.birthday-card{padding-top:20px;padding-bottom:20px}.birthday-card h1{font-size:clamp(62px,11vw,100px)}.title-rule{margin-top:18px}.envelope{width:154px;height:103px}.letter-trigger{gap:8px}.cake-stage{width:min(82vw,380px)}.lock-screen{place-items:start center}.lock-emblem{width:96px;height:75px;margin-bottom:8px}.lock-emblem svg{width:94px}.lock-heart{margin:auto 0}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.floating-notes,.lock-sparkles,.cake-stars,.cake-confetti,.writing-pen{display:none}.paper-sheet.writing .ink-word:not(.written){clip-path:none}.paper-sheet.writing .letter-signature{opacity:1}.paper-sheet.writing .signature-flourish path{stroke-dashoffset:0}}
+
+.lock-kicker{margin:3px 0 8px;color:#a67487;font-size:10px;font-weight:700;letter-spacing:.28em}
+.lock-intro{margin:11px 0 0;color:#946e7c;font-size:12px;line-height:1.45}
+.lock-heart{box-shadow:0 34px 80px #4c304680,0 0 0 8px #fff5eb1c,inset 0 0 38px #fffdfacc}
+.cake-stage{margin-bottom:0}
+.cake-hint{margin:4px 0 0;color:#ffe9e4;font-size:12px;font-weight:500;letter-spacing:.035em;text-shadow:0 2px 8px #503b5a66}
+.album-cover-photo{position:absolute;z-index:2;top:12%;left:50%;display:block;width:43%;aspect-ratio:1;overflow:hidden;border:6px solid #fffaf3;border-radius:2px;background:#f4d9d8;box-shadow:0 9px 18px #573b5366;transform:translateX(-50%) rotate(-5deg)}
+.album-cover-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 34%}
+.album-cover-title{top:56%}
+.album-cover-mark{top:76%}
+.album-stage{padding-bottom:8px}
+.album-photo:after{content:"";position:absolute;z-index:2;top:-5px;left:50%;width:60px;height:17px;background:#fff4dfb8;box-shadow:0 1px 2px #6f576332;transform:translateX(-50%) rotate(-3deg);pointer-events:none}
+.album-guide{margin:9px 0 3px;color:#8d687b;font-size:12px;font-weight:600}
+.album-count{min-height:15px;margin:0;color:#a87b8c;font-size:11px;font-weight:700;letter-spacing:.2em}
+@media(max-width:650px){.lock-emblem{margin-bottom:5px}.pass-dots{margin-top:19px}}
+@media(max-height:700px){.cake-hint{margin-top:0}}

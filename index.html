@@ -22,7 +22,9 @@
         <div class="lock-emblem" aria-hidden="true">
           <svg viewBox="0 0 130 94" fill="none"><path d="M12 25h106v62H12z" fill="#fff9f3" stroke="#bd8798" stroke-width="1.6"/><path d="M12 25l53 40 53-40" stroke="#bd8798" stroke-width="1.6"/><path d="M12 87l38-32m68 32L80 55" stroke="#d9adba" stroke-width="1.4"/><path d="M11 24L65 3l54 21-54 39L11 24Z" fill="#efd1d7" stroke="#bd8798" stroke-width="1.6"/><circle cx="65" cy="56" r="11" fill="#b77a8d"/><path d="M65 62c-5-3-8-6-8-10 0-4 5-6 8-2 3-4 8-2 8 2 0 4-3 7-8 10Z" fill="#fff9f3"/></svg>
         </div>
+        <p class="lock-kicker">MỘT MÓN QUÀ NHỎ</p>
         <h1 id="lockTitle">Mật mã<span>♡</span></h1>
+        <p class="lock-intro">Một góc nhỏ dành riêng cho MiNu</p>
         <div class="pass-dots" id="passDots" aria-label="Đã nhập 0 trên 4 số"><i></i><i></i><i></i><i></i></div>
         <div class="number-pad" id="numberPad" aria-label="Bàn phím mật mã">
           <button type="button" data-digit="1">1</button><button type="button" data-digit="2">2</button><button type="button" data-digit="3">3</button>
@@ -76,6 +78,7 @@
         <button class="candle-touch candle-touch-two" type="button" data-candle="two" aria-label="Tắt nến thứ hai"></button>
         <button class="candle-touch candle-touch-three" type="button" data-candle="three" aria-label="Tắt nến thứ ba"></button>
       </div>
+      <p class="cake-hint">Chạm vào từng ngọn nến để gửi một điều ước ✦</p>
     </div>
   </section>
 
@@ -142,12 +145,14 @@
           <button class="album-book" id="albumBook" type="button" aria-label="Mở album" data-page="cover">
             <span class="album-pages-edge" aria-hidden="true"></span>
             <span class="album-leaf" aria-hidden="true">
-              <span class="album-cover-face" id="albumCoverFace"><span class="album-cover-frame"></span><span class="album-cover-spark">✦</span><span class="album-cover-title">Album</span><span class="album-cover-mark">♡</span></span>
+              <span class="album-cover-face" id="albumCoverFace"><span class="album-cover-frame"></span><span class="album-cover-photo"><img src="assets/minu-05.jpg" alt=""></span><span class="album-cover-title">Album</span><span class="album-cover-mark">♡</span></span>
               <span class="album-page-face" id="albumPageFace" hidden><span class="album-photo" id="albumPhoto"><img class="album-backdrop" id="albumBackdrop" alt=""><img class="album-image" id="albumImage" alt=""></span><span class="album-page-corner"></span></span>
               <span class="album-back-face" id="albumBackFace" hidden><span class="album-cover-frame"></span><span class="album-back-mark">♡</span></span>
             </span>
           </button>
         </div>
+        <p class="album-guide" id="albumGuide">Chạm vào cuốn album để lật trang</p>
+        <p class="album-count" id="albumCount" aria-live="polite"></p>
       </div>
       <div class="gift-view music-view" id="musicView" hidden>
         <h2 id="musicTitle">Song for Minu ♡</h2>
@@ -208,6 +213,8 @@
     const albumBackFace=$('#albumBackFace');
     const albumBackdrop=$('#albumBackdrop');
     const albumImage=$('#albumImage');
+    const albumGuide=$('#albumGuide');
+    const albumCount=$('#albumCount');
     const musicView=$('#musicView');
     const giftAudio=$('#giftAudio');
     const musicPlay=$('#musicPlay');
@@ -240,6 +247,8 @@
       albumBackFace.hidden=!isBack;
       albumBook.dataset.page=isCover?'cover':isBack?'back':'photo';
       albumBook.setAttribute('aria-label',isCover?'Mở album':isBack?'Xem lại bìa trước':albumIndex===albumPhotos.length-1?'Lật tới bìa sau':`Lật sang ảnh ${albumIndex+2}`);
+      albumGuide.textContent=isCover?'Chạm vào cuốn album để mở':isBack?'Chạm để trở về bìa trước':'Chạm vào ảnh để lật trang tiếp theo';
+      albumCount.textContent=isCover?'':isBack?'Hết album ♡':`${String(albumIndex+1).padStart(2,'0')} / ${String(albumPhotos.length).padStart(2,'0')}`;
       if(!isCover&&!isBack){
         const src=albumPhotos[albumIndex];
         albumImage.src=src;
