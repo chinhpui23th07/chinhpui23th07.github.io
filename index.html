@@ -142,7 +142,7 @@
           <button class="album-book" id="albumBook" type="button" aria-label="Mở album" data-page="cover">
             <span class="album-pages-edge" aria-hidden="true"></span>
             <span class="album-leaf" aria-hidden="true">
-              <span class="album-cover-face" id="albumCoverFace"><span class="album-cover-frame"></span><span class="album-cover-photo"><img src="assets/minu-05.jpg" alt=""></span><span class="album-cover-title">Album</span><span class="album-cover-mark">♡</span></span>
+              <span class="album-cover-face" id="albumCoverFace"><span class="album-cover-frame"></span><span class="album-cover-photo"><img src="assets/album-05.jpg" alt=""></span><span class="album-cover-title">Album</span><span class="album-cover-mark">♡</span></span>
               <span class="album-page-face" id="albumPageFace" hidden><span class="album-photo" id="albumPhoto"><img class="album-backdrop" id="albumBackdrop" alt=""><img class="album-image" id="albumImage" alt=""></span><span class="album-page-corner"></span></span>
               <span class="album-back-face" id="albumBackFace" hidden><span class="album-cover-frame"></span><span class="album-back-mark">♡</span></span>
             </span>
@@ -241,10 +241,55 @@
     const storageKey='minu-birthday-unlocked-v1';
     let entered='',busy=false,opening=false,closing=false,envelopeOpening=false,letterRun=0,writeRun=0,candlesOut=0,giftBusy=false,activeGift=null,flowerLeaving=false,fxAudio=null;
     const albumPhotos=[
-      'assets/minu-01.jpg','assets/minu-02.jpg','assets/minu-03.jpg','assets/minu-04.jpg',
-      'assets/minu-05.jpg','assets/minu-06.jpg','assets/minu-07.jpg','assets/minu-08.jpg','assets/minu-09.jpg'
+      'assets/album-01.jpg','assets/album-02.jpg','assets/album-03.jpg','assets/album-04.jpg',
+      'assets/album-05.jpg','assets/album-06.jpg','assets/album-07.jpg','assets/album-08.jpg','assets/album-09.jpg'
     ];
     let albumIndex=-1,albumTurning=false,albumTurnRun=0;
+    const albumLoads=new Map(),albumResolvedSources=new Map(),albumDecodedImages=new Map();
+    let albumWarming=false;
+
+    function loadAlbumSource(src,priority='low'){
+      if(albumLoads.has(src))return albumLoads.get(src);
+      const image=new Image();
+      image.decoding='async';
+      image.fetchPriority=priority;
+      const task=new Promise((resolve,reject)=>{
+        image.onload=async()=>{
+          try{await image.decode?.()}catch{}
+          if(image.naturalWidth>0){
+            albumDecodedImages.set(src,image);
+            resolve(src);
+          }else reject(new Error('Album image is empty'));
+        };
+        image.onerror=()=>reject(new Error('Album image failed to load'));
+        image.src=src;
+      });
+      albumLoads.set(src,task);
+      task.catch(()=>{if(albumLoads.get(src)===task)albumLoads.delete(src)});
+      return task;
+    }
+    async function ensureAlbumPhoto(index){
+      const ready=albumResolvedSources.get(index);
+      if(ready)return ready;
+      const preferred=albumPhotos[index];
+      const original=preferred.replace('/album-','/minu-');
+      for(const src of [preferred,`${preferred}?retry=${Date.now()}`,original]){
+        try{
+          await loadAlbumSource(src,index===0?'high':'low');
+          albumResolvedSources.set(index,src);
+          return src;
+        }catch{}
+      }
+      throw new Error('Album image could not be loaded');
+    }
+    async function warmAlbumPhotos(){
+      if(albumWarming)return;
+      albumWarming=true;
+      for(let index=0;index<albumPhotos.length;index++){
+        try{await ensureAlbumPhoto(index)}catch{}
+      }
+      albumWarming=false;
+    }
 
     function renderAlbum(){
       const isCover=albumIndex===-1;
@@ -255,18 +300,36 @@
       albumBook.dataset.page=isCover?'cover':isBack?'back':'photo';
       albumBook.setAttribute('aria-label',isCover?'Mở album':isBack?'Xem lại bìa trước':albumIndex===albumPhotos.length-1?'Lật tới bìa sau':`Lật sang ảnh ${albumIndex+2}`);
       if(!isCover&&!isBack){
-        const src=albumPhotos[albumIndex];
+        const src=albumResolvedSources.get(albumIndex)||albumPhotos[albumIndex];
         albumImage.src=src;
         albumBackdrop.src=src;
       }
     }
-    function turnAlbum(direction=1){
+    async function turnAlbum(direction=1){
       if(albumTurning)return;
       let next=albumIndex+direction;
       if(next>albumPhotos.length)next=-1;
       if(next<-1)next=albumPhotos.length;
       albumTurning=true;
       const run=++albumTurnRun;
+      if(next>=0&&next<albumPhotos.length){
+        albumBook.classList.add('loading');
+        albumBook.setAttribute('aria-busy','true');
+        try{await ensureAlbumPhoto(next)}catch{
+          if(run===albumTurnRun){
+            albumBook.classList.remove('loading');
+            albumBook.removeAttribute('aria-busy');
+            albumBook.classList.add('load-error');
+            albumBook.setAttribute('aria-label','Ảnh chưa tải được, chạm để thử lại');
+            albumTurning=false;
+            setTimeout(()=>albumBook.classList.remove('load-error'),500);
+          }
+          return;
+        }
+        if(run!==albumTurnRun)return;
+        albumBook.classList.remove('loading');
+        albumBook.removeAttribute('aria-busy');
+      }
       albumBook.classList.add('turning');
       setTimeout(()=>{
         if(run!==albumTurnRun)return;
@@ -282,7 +345,8 @@
     function resetAlbum(){
       albumTurnRun++;
       albumTurning=false;
-      albumBook.classList.remove('turning');
+      albumBook.classList.remove('turning','loading','load-error');
+      albumBook.removeAttribute('aria-busy');
       albumIndex=-1;
       renderAlbum();
     }
@@ -294,6 +358,7 @@
       }
     });
     renderAlbum();
+    warmAlbumPhotos();
 
     const inkWords=[];
     letterTextElements.forEach(line=>{
@@ -449,7 +514,7 @@
         albumView.hidden=!isAlbum;
         musicView.hidden=isAlbum;
         giftPanel.setAttribute('aria-labelledby',isAlbum?'albumTitle':'musicTitle');
-        if(isAlbum)resetAlbum();
+        if(isAlbum){resetAlbum();warmAlbumPhotos()}
         giftOverlay.hidden=false;
         page.inert=true;
         document.body.style.overflow='hidden';

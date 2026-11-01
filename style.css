@@ -290,6 +290,11 @@ body.locked{overflow:hidden}
 .album-cover-title{top:56%}
 .album-cover-mark{top:76%}
 .album-photo:after{content:"";position:absolute;z-index:2;top:-5px;left:50%;width:60px;height:17px;background:#fff4dfb8;box-shadow:0 1px 2px #6f576332;transform:translateX(-50%) rotate(-3deg);pointer-events:none}
+.album-book.loading{cursor:progress}
+.album-book.loading:after{content:"";position:absolute;z-index:5;right:22px;bottom:20px;width:20px;height:20px;border:2px solid #fff7e6;border-top-color:transparent;border-radius:50%;box-shadow:0 0 0 4px #82576e55;animation:album-loading .8s linear infinite;pointer-events:none}
+@keyframes album-loading{to{transform:rotate(360deg)}}
+.album-book.load-error{animation:album-load-shake .35s ease-in-out}
+@keyframes album-load-shake{25%,75%{translate:-4px 0}50%{translate:4px 0}}
 
 .envelope-stage{position:relative;z-index:1;display:grid;place-items:center;width:min(100%,620px);min-height:min(72svh,460px);animation:paper-open .6s cubic-bezier(.2,.8,.2,1) both}
 .envelope-stage.revealing{animation:envelope-stage-away .82s ease-in both}
