@@ -16,7 +16,7 @@
     <div class="lock-glow" aria-hidden="true"></div>
     <div class="lock-sparkles" aria-hidden="true"><span>✦</span><span>✧</span><span>♡</span><span>✦</span><span>✧</span><span>✦</span><span>♡</span><span>✧</span></div>
     <div class="lock-heart">
-      <div class="lock-corner lock-corner-top" aria-hidden="true">✧</div>
+      <div class="lock-corner lock-corner-top" aria-hidden="true">♏︎</div>
       <div class="lock-corner lock-corner-bottom" aria-hidden="true">✧</div>
       <div class="lock-content">
         <div class="lock-emblem" aria-hidden="true">
@@ -112,6 +112,18 @@
   </section>
 
   <main class="birthday-page" id="birthdayPage" inert>
+    <div class="dream-sky" aria-hidden="true">
+      <span class="dream-moon"><span class="dream-zodiac">♏︎</span></span>
+      <svg class="scorpio-constellation" viewBox="0 0 360 440" fill="none" aria-hidden="true">
+        <path class="scorpio-thread" d="M151 132 116 105 84 75 49 94 70 120M151 132l52-30 34-35 42 15-24 31M151 132l28 42 6 45 27 48 24 47 47 33 32-20-4-39-30-14"/>
+        <path class="scorpio-thread scorpio-thread-soft" d="M116 105 101 138M203 102l12 36M185 219l-32 28M236 314l-29 28"/>
+        <g class="scorpio-stars"><circle cx="151" cy="132" r="5"/><circle cx="116" cy="105" r="3"/><circle cx="84" cy="75" r="5"/><circle cx="49" cy="94" r="3"/><circle cx="70" cy="120" r="2"/><circle cx="203" cy="102" r="4"/><circle cx="237" cy="67" r="5"/><circle cx="279" cy="82" r="3"/><circle cx="255" cy="113" r="2"/><circle cx="179" cy="174" r="4"/><circle cx="185" cy="219" r="4"/><circle cx="212" cy="267" r="5"/><circle cx="236" cy="314" r="4"/><circle cx="283" cy="347" r="5"/><circle cx="315" cy="327" r="4"/><circle cx="311" cy="288" r="4"/><circle cx="281" cy="274" r="3"/></g>
+      </svg>
+      <span class="dream-halo dream-halo-one"></span><span class="dream-halo dream-halo-two"></span>
+      <span class="dream-cloud dream-cloud-one"></span><span class="dream-cloud dream-cloud-two"></span><span class="dream-cloud dream-cloud-three"></span>
+      <span class="dream-comet dream-comet-one"></span><span class="dream-comet dream-comet-two"></span>
+      <span class="dream-hill dream-hill-back"></span><span class="dream-hill dream-hill-front"></span>
+    </div>
     <div class="ambient ambient-one" aria-hidden="true"></div><div class="ambient ambient-two" aria-hidden="true"></div>
     <div class="floating-notes" aria-hidden="true">
       <span>✦</span><span>♡</span><span>✧</span><span>♡</span><span>✦</span><span>✧</span>
@@ -242,6 +254,24 @@
     const prefersLessMotion=matchMedia('(prefers-reduced-motion: reduce)');
     const storageKey='minu-birthday-unlocked-v1';
     let entered='',busy=false,opening=false,closing=false,envelopeOpening=false,letterRun=0,writeRun=0,candlesOut=0,giftBusy=false,activeGift=null,flowerLeaving=false,fxAudio=null,backgroundPausedForSong=false;
+    if(matchMedia('(pointer:fine)').matches&&!prefersLessMotion.matches){
+      let parallaxFrame=0;
+      page.addEventListener('pointermove',event=>{
+        if(parallaxFrame)return;
+        parallaxFrame=requestAnimationFrame(()=>{
+          const bounds=page.getBoundingClientRect();
+          page.style.setProperty('--dream-x',`${((event.clientX-bounds.left)/bounds.width-.5)*20}px`);
+          page.style.setProperty('--dream-y',`${((event.clientY-bounds.top)/bounds.height-.5)*14}px`);
+          parallaxFrame=0;
+        });
+      });
+      page.addEventListener('pointerleave',()=>{
+        if(parallaxFrame)cancelAnimationFrame(parallaxFrame);
+        parallaxFrame=0;
+        page.style.setProperty('--dream-x','0px');
+        page.style.setProperty('--dream-y','0px');
+      });
+    }
     backgroundMusic.volume=.35;
     function playBackgroundMusic(fromUnlock=false){
       if(backgroundPausedForSong||document.hidden||(!fromUnlock&&!lock.hidden))return;

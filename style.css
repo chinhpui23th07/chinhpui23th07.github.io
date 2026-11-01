@@ -322,3 +322,180 @@ body.locked{overflow:hidden}
 .letter-overlay.closing .envelope-stage{animation:fade-out .38s both}
 @media(max-width:600px){.envelope-stage{min-height:340px}.vintage-envelope{width:min(84vw,380px)}.envelope-close{right:1%;top:0}}
 @media(max-height:700px){.envelope-stage{min-height:280px}}
+
+/* Moonlit birthday garden */
+.lock-screen{
+  background:
+    radial-gradient(circle at 50% 42%,#f6cfdf7a 0,transparent 31%),
+    radial-gradient(ellipse at 7% 80%,#c999d58c 0,transparent 42%),
+    radial-gradient(ellipse at 95% 12%,#eeaebb81 0,transparent 37%),
+    linear-gradient(150deg,#2d254f 0%,#6d4b81 47%,#b97994 100%);
+}
+.lock-screen:before,.lock-screen:after{border-color:#ffecc47a;box-shadow:0 0 34px #e9b8c343,inset 0 0 35px #ffe8d62b}
+.lock-glow{background:#fac6d6b5;filter:blur(85px)}
+.lock-heart{
+  border-color:#fff8e5;
+  background:linear-gradient(150deg,#fffcf5f7,#fae8eef5 60%,#ebd4e5f0);
+  box-shadow:0 36px 90px #241637a6,0 0 0 9px #fff7dd22,0 0 85px #f9d1df7a,inset 0 0 40px #fffefa;
+}
+.lock-content h1{color:#654067}
+.lock-emblem{background:radial-gradient(circle,#ffe7d5 0,#f8d8e5b9 55%,transparent 75%)}
+.lock-sparkles span{color:#fff4c9;text-shadow:0 0 16px #fff8df;animation-duration:5.6s}
+.lock-corner-top{font-family:"Segoe UI Symbol",Georgia,serif;color:#a97890;font-size:25px;text-shadow:0 0 10px #f9dbd3}
+
+.cake-scene{
+  background:
+    radial-gradient(circle at 50% 43%,#e9aed197 0,transparent 37%),
+    radial-gradient(ellipse at 16% 7%,#9b83cb89 0,transparent 36%),
+    radial-gradient(ellipse at 87% 86%,#ec9bad5c 0,transparent 43%),
+    linear-gradient(155deg,#282346,#634c87 55%,#a66f90);
+}
+.cake-haze{background:#ffd2d1ab;filter:blur(94px)}
+.cake-stars span{color:#fff2c5;text-shadow:0 0 19px #fff1ba;animation-duration:3.6s}
+.cake-content h2{text-shadow:0 3px 15px #32244e,0 0 34px #ffe1dd8c}
+.cake-stage{filter:drop-shadow(0 26px 28px #2b234c9c) drop-shadow(0 0 36px #ffe3d260)}
+.cake-scene:before{content:"♏︎";position:absolute;top:8%;right:9%;color:#ffe6d35c;font:60px/1 "Segoe UI Symbol",Georgia,serif;text-shadow:0 0 28px #ffe8d87a;transform:rotate(12deg);pointer-events:none;animation:zodiac-shimmer 6s ease-in-out infinite}
+@keyframes zodiac-shimmer{50%{opacity:.36;transform:rotate(4deg) scale(1.08)}}
+
+.flower-scene{
+  background:
+    radial-gradient(ellipse at 50% 37%,#fff9ed 0,#fff2e7 21%,#f2dce9 54%,transparent 77%),
+    linear-gradient(155deg,#6b5a92,#d19db6 65%,#e9baac);
+}
+.flower-halo{width:min(85vw,760px);background:#fff4df;filter:blur(75px);opacity:.86;animation:glow 7s ease-in-out infinite}
+.flower-message h2{text-shadow:0 4px 18px #fff8f0,0 0 48px #fff8e8}
+.flower-message button{border-color:#bc8ca6;background:#fffaf3e8;box-shadow:0 12px 28px #6e587451,0 0 26px #fff9e599}
+.flower-garden{filter:drop-shadow(0 16px 12px #79567066)}
+
+.birthday-page{
+  background:
+    radial-gradient(ellipse at 50% 28%,#bd9bd2 0,#9c7eb9 20%,transparent 49%),
+    radial-gradient(ellipse at 10% 10%,#9d86c0 0,transparent 46%),
+    radial-gradient(ellipse at 95% 82%,#ba789c 0,transparent 42%),
+    linear-gradient(180deg,#1e214b 0%,#524578 53%,#aa7295 100%);
+}
+.birthday-page:before,.birthday-page:after{
+  z-index:2;top:29%;width:min(55vw,580px);border-color:#fff3d448;
+  box-shadow:0 0 20px #fff1cf29,inset 0 0 20px #fff1cf20;
+  animation:dream-orbit 18s ease-in-out infinite;
+}
+.birthday-page:after{width:min(67vw,720px);border-color:#ffe6d72e;animation-delay:-9s}
+@keyframes dream-orbit{50%{transform:translate(-50%,-50%) scale(1.08) rotate(12deg);opacity:.5}}
+.dream-sky{position:absolute;inset:-16px;z-index:0;overflow:hidden;pointer-events:none;transform:translate3d(var(--dream-x,0px),var(--dream-y,0px),0);transition:transform .45s ease-out}
+.dream-sky:before,.dream-sky:after{content:"";position:absolute;inset:0;pointer-events:none}
+.dream-sky:before{
+  background-image:
+    radial-gradient(2px 2px at 9% 14%,#fff8df 98%,transparent),radial-gradient(2px 2px at 19% 43%,#fff8df 98%,transparent),
+    radial-gradient(3px 3px at 28% 9%,#fff9e6 98%,transparent),radial-gradient(2px 2px at 39% 28%,#fff8df 98%,transparent),
+    radial-gradient(2px 2px at 62% 15%,#fff8df 98%,transparent),radial-gradient(3px 3px at 77% 10%,#fff8df 98%,transparent),
+    radial-gradient(2px 2px at 91% 28%,#fff8df 98%,transparent),radial-gradient(2px 2px at 86% 48%,#fff8df 98%,transparent),
+    radial-gradient(2px 2px at 11% 59%,#fff8df 98%,transparent),radial-gradient(2px 2px at 68% 57%,#fff8df 98%,transparent);
+  filter:drop-shadow(0 0 7px #fff8d9);animation:dream-twinkle 4.5s ease-in-out infinite alternate;
+}
+.dream-sky:after{
+  background-image:
+    radial-gradient(1px 1px at 5% 34%,#ffedcf 99%,transparent),radial-gradient(1px 1px at 16% 19%,#ffedcf 99%,transparent),
+    radial-gradient(1px 1px at 32% 53%,#ffedcf 99%,transparent),radial-gradient(1px 1px at 48% 11%,#ffedcf 99%,transparent),
+    radial-gradient(1px 1px at 56% 46%,#ffedcf 99%,transparent),radial-gradient(1px 1px at 73% 37%,#ffedcf 99%,transparent),
+    radial-gradient(1px 1px at 94% 14%,#ffedcf 99%,transparent),radial-gradient(1px 1px at 82% 64%,#ffedcf 99%,transparent);
+  animation:dream-twinkle 6s ease-in-out -3s infinite alternate-reverse;
+}
+@keyframes dream-twinkle{from{opacity:.28}to{opacity:1}}
+.dream-moon{
+  position:absolute;top:8%;left:50%;width:clamp(165px,22vw,275px);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 31% 27%,#fffefa 0,#fff4dc 32%,#f5d9d9 69%,#d9b6d3 100%);
+  box-shadow:inset -20px -18px 32px #b794bb88,0 0 0 12px #fff1dd15,0 0 47px 18px #ffebd8a3,0 0 120px 72px #ffdef060;
+  transform:translateX(-50%);animation:moon-breathe 8s ease-in-out infinite;
+}
+.dream-moon:before{content:"";position:absolute;inset:10%;border-radius:50%;background:radial-gradient(circle at 30% 42%,#d6b7be45 0 9%,transparent 10%),radial-gradient(circle at 68% 58%,#d3b4c052 0 6%,transparent 7%),radial-gradient(circle at 64% 24%,#dfc3c34d 0 4%,transparent 5%)}
+.dream-moon:after{content:"";position:absolute;inset:13%;border:1px solid #b785a55e;border-radius:50%;box-shadow:inset 0 0 14px #e6bdd077,0 0 14px #fff7e9a1}
+.dream-zodiac{position:absolute;z-index:2;inset:0;display:grid;place-items:center;color:#9b7595;font:400 clamp(70px,9vw,118px)/1 "Segoe UI Symbol",Georgia,serif;text-shadow:0 2px 0 #fff8eb,0 0 27px #f3bacc;opacity:.74;transform:translateY(-4px)}
+@keyframes moon-breathe{50%{transform:translateX(-50%) translateY(-9px) scale(1.04);box-shadow:inset -20px -18px 32px #b794bb88,0 0 0 19px #fff1dd12,0 0 62px 23px #ffebd8be,0 0 140px 88px #ffdef080}}
+.scorpio-constellation{position:absolute;z-index:1;top:8%;left:4%;width:clamp(190px,23vw,310px);height:auto;overflow:visible;opacity:.78;filter:drop-shadow(0 0 9px #fff0ce);transform:rotate(-11deg);animation:constellation-float 9s ease-in-out infinite}
+.scorpio-thread{stroke:#ffebce;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;opacity:.68;stroke-dasharray:410;stroke-dashoffset:0;animation:constellation-trace 9s ease-in-out infinite}
+.scorpio-thread-soft{stroke-width:1;opacity:.39;animation-delay:-2s}
+.scorpio-stars circle{fill:#fff8e7;stroke:#ffe5d3;stroke-width:1.2;filter:drop-shadow(0 0 5px #fff3d5);animation:constellation-glint 3s ease-in-out infinite alternate}
+.scorpio-stars circle:nth-child(3n){animation-delay:-1.5s}.scorpio-stars circle:nth-child(4n){animation-delay:-2.3s}
+@keyframes constellation-float{50%{transform:translateY(-12px) rotate(-7deg)}}
+@keyframes constellation-glint{50%{opacity:.35;transform:scale(.72)}}
+@keyframes constellation-trace{50%{stroke-dashoffset:55;opacity:.35}}
+.dream-halo{position:absolute;top:26%;left:50%;width:min(60vw,640px);aspect-ratio:1;border:1px solid #ffefcb30;border-radius:50%;transform:translate(-50%,-50%) rotate(-17deg)}
+.dream-halo-one{box-shadow:0 0 26px #ffeac425,inset 0 0 26px #ffeac425;animation:halo-turn 25s linear infinite}
+.dream-halo-two{width:min(75vw,780px);border-color:#ffeed31c;animation:halo-turn 34s linear infinite reverse}
+.dream-halo:before{content:"";position:absolute;top:14%;left:13%;width:7px;height:7px;border-radius:50%;background:#fff9e2;box-shadow:0 0 9px 3px #fff4d8,0 0 26px #fff0d8}
+.dream-halo-two:before{top:70%;left:7%;width:4px;height:4px;opacity:.7}
+@keyframes halo-turn{to{transform:translate(-50%,-50%) rotate(343deg)}}
+.dream-cloud{position:absolute;width:clamp(220px,36vw,590px);height:clamp(65px,11vw,145px);border-radius:50%;background:linear-gradient(180deg,#f9d9e78c,#d6b5dd38 64%,transparent);filter:blur(11px);opacity:.68;animation:cloud-sail 17s ease-in-out infinite alternate}
+.dream-cloud:before,.dream-cloud:after{content:"";position:absolute;border-radius:50%;background:#f8d9e483;filter:blur(16px)}
+.dream-cloud:before{width:55%;height:125%;left:15%;bottom:18%}.dream-cloud:after{width:45%;height:85%;right:3%;bottom:2%}
+.dream-cloud-one{top:30%;left:-12%}.dream-cloud-two{top:18%;right:-13%;animation-duration:21s;animation-delay:-8s}.dream-cloud-three{bottom:12%;left:34%;width:31vw;opacity:.33;animation-delay:-4s}
+@keyframes cloud-sail{to{transform:translateX(65px) translateY(-15px);opacity:.43}}
+.dream-comet{position:absolute;z-index:2;top:15%;left:-15%;width:150px;height:2px;border-radius:50%;background:linear-gradient(90deg,transparent,#ffefd57d 55%,#fffef4);box-shadow:0 0 12px #fff3d5;transform:rotate(-20deg);opacity:0;animation:comet-cross 12s ease-in-out infinite}
+.dream-comet:after{content:"";position:absolute;right:-4px;top:-3px;width:8px;height:8px;border-radius:50%;background:#fffef2;box-shadow:0 0 14px #fff4d5}
+.dream-comet-two{top:42%;animation-delay:-6s;animation-duration:15s}
+@keyframes comet-cross{0%,17%{opacity:0;transform:translate(0,0) rotate(-20deg)}20%{opacity:1}35%{opacity:0;transform:translate(110vw,35vh) rotate(-20deg)}100%{opacity:0}}
+.dream-hill{position:absolute;left:-18%;bottom:-26%;width:140%;height:46%;border-radius:50% 50% 0 0;transform:rotate(-3deg)}
+.dream-hill-back{bottom:-19%;left:-27%;background:linear-gradient(180deg,#9676ae8c,#725b9f 65%,#5b477d);box-shadow:0 -22px 70px #dfb6e23b}
+.dream-hill-front{left:-12%;bottom:-31%;background:radial-gradient(circle at 21% 30%,#ecc6d130 0 2px,transparent 3px),radial-gradient(circle at 70% 18%,#f5e5d844 0 2px,transparent 3px),linear-gradient(170deg,#ba83a4,#71547f 80%);box-shadow:0 -28px 75px #edbdcf31;transform:rotate(4deg)}
+.ambient{z-index:1;opacity:.5;filter:blur(90px)}
+.ambient-one{background:#e6b7f0}.ambient-two{background:#f1b7c6}
+.floating-notes{z-index:3}
+.floating-notes span{color:#ffe8d8;text-shadow:0 0 12px #fff2d9,0 0 25px #fff0db;animation-duration:var(--duration,17s)}
+.gift-room{position:relative;z-index:4;width:min(100%,1010px);padding:clamp(150px,23vh,215px) 26px 34px}
+.gift-grid{gap:clamp(13px,2.5vw,30px);align-items:center}
+.gift-box{
+  position:relative;isolation:isolate;justify-content:center;min-height:280px;padding:28px 12px 20px;
+  border-radius:40% 40% 30px 30px;
+  filter:drop-shadow(0 16px 22px #251c4870);
+  transition:transform .35s cubic-bezier(.2,.8,.2,1),filter .35s;
+}
+.gift-box:before{content:"";position:absolute;z-index:-1;inset:5px 0 0;border:1px solid #ffece1a1;border-radius:46% 46% 30px 30px;background:linear-gradient(150deg,#fff8eb31,#f6d5eb23 57%,#9f7abf40);box-shadow:inset 0 1px 20px #fff6ef38,0 0 0 6px #fff5ea0c,0 0 28px #f6cde749;backdrop-filter:blur(7px);transition:background .35s,box-shadow .35s}
+.gift-box:after{content:"";position:absolute;z-index:-1;left:12%;right:12%;bottom:4px;height:28px;border-radius:50%;background:#f8d6e0;filter:blur(16px);opacity:.56;animation:gift-glow 4s ease-in-out infinite}
+.gift-box:hover,.gift-box:focus-visible{transform:translateY(-13px) scale(1.04);filter:drop-shadow(0 23px 28px #241b468c)}
+.gift-box:hover:before,.gift-box:focus-visible:before{background:linear-gradient(150deg,#fff8eb59,#f6d5eb3e 57%,#9f7abf50);box-shadow:inset 0 1px 30px #fff9ef70,0 0 0 6px #fff5ea16,0 0 46px #ffe3ed9a}
+.gift-box:focus-visible{outline:3px solid #fff4d8;outline-offset:5px}
+.gift-art{z-index:1;width:min(100%,190px);height:171px;filter:drop-shadow(0 22px 15px #51395f85);animation:gift-hover 4s ease-in-out infinite}
+.gift-music .gift-art{animation-delay:-1.4s}.gift-letter .gift-art{animation-delay:-2.7s}
+.gift-music:after{animation-delay:-1.4s}.gift-letter:after{animation-delay:-2.7s}
+@keyframes gift-hover{50%{transform:translateY(-12px) rotate(2deg)}}
+@keyframes gift-glow{50%{opacity:.92;transform:scale(1.13)}}
+.gift-album{--box-main:#f5a9b2;--box-dark:#bd647d;--ribbon:#fff0d5}
+.gift-music{--box-main:#bba9e8;--box-dark:#7b68ac;--ribbon:#fce8fb}
+.gift-letter{--box-main:#e8b181;--box-dark:#b67872;--ribbon:#fff0d6}
+.gift-body{height:115px;border-radius:7px 7px 16px 16px;box-shadow:inset 0 2px 13px #fff9e6bd,0 9px 20px #48315080}
+.gift-lid{top:31px;height:47px;border-radius:9px;box-shadow:0 8px 13px #4c335363,inset 0 2px 6px #fff9e6a1}
+.gift-ribbon-v{top:32px;background:linear-gradient(90deg,#dbbbba,var(--ribbon) 38%,#fffdfa 52%,#dbbbba)}
+.gift-ribbon-h{top:44px;height:18px;background:linear-gradient(#fffefa,var(--ribbon) 50%,#d8b6b5)}
+.gift-body:after{animation:box-spark 3s ease-in-out infinite}
+.gift-music .gift-body:after{animation-delay:-1s}.gift-letter .gift-body:after{animation-delay:-2s}
+@keyframes box-spark{50%{opacity:.28;transform:scale(.94)}}
+.gift-bow{top:-5px;filter:drop-shadow(0 6px 6px #51345d8c)}
+.gift-box.opening .gift-art{animation:none}
+.gift-box.opening:before{box-shadow:inset 0 1px 24px #fff9ef70,0 0 65px #ffe3eda8}
+.gift-shade{background:#211a3bd9;backdrop-filter:blur(13px)}
+.gift-panel{border-color:#fff7e5;background:radial-gradient(circle at 50% 0,#fffefa,#f5e6ee 68%,#e1cce6);box-shadow:0 30px 90px #181331a8,0 0 70px #ffe4eb55,inset 0 0 28px #fffefa}
+.gift-close{background:#fff8ed;color:#785174;box-shadow:0 3px 12px #9a718f55}
+.music-stage:before{background:#d6b9e8;opacity:.8}
+.turntable{box-shadow:0 22px 34px #6a508791,inset 0 0 0 7px #fff7ec,inset 0 -8px 16px #bc8b9a5c}
+.overlay-shade{background:#231c3cd6;backdrop-filter:blur(12px)}
+.vintage-envelope{filter:drop-shadow(0 26px 26px #17132dac) drop-shadow(0 0 32px #ffe7d170)}
+.paper-sheet{box-shadow:2px 3px 0 #e9decf,4px 6px 0 #d7c6b547,0 34px 90px #17132bb0,0 0 32px #ffe9d35e,inset 0 0 45px #d0b89820}
+
+@media(max-width:650px){
+  .dream-moon{top:5%;width:clamp(125px,34vw,190px)}
+  .dream-zodiac{font-size:clamp(57px,18vw,82px)}
+  .scorpio-constellation{top:5%;left:-48px;width:180px;opacity:.48}
+  .dream-halo{top:17%}
+  .dream-cloud-one{top:24%}.dream-cloud-two{top:10%}
+  .birthday-page:before,.birthday-page:after{top:17%;width:65vw}.birthday-page:after{width:86vw}
+  .gift-room{padding:clamp(135px,21vh,180px) 13px 35px}
+  .gift-grid{gap:9px 12px}
+  .gift-box{min-height:200px;padding:19px 6px 12px;border-radius:44% 44% 22px 22px}
+  .gift-box:before{border-radius:44% 44% 22px 22px}
+  .gift-art{width:min(100%,143px);height:134px}
+  .gift-body{height:84px}.gift-lid{top:27px;height:36px}.gift-ribbon-v{top:28px}.gift-ribbon-h{top:38px;height:15px}.gift-bow{top:-4px}
+  .gift-letter{width:52%;min-width:155px}
+  .dream-hill{height:37%}
+}
+@media(max-width:380px){.gift-room{padding-top:128px}.gift-grid{gap:5px 8px}.gift-box{min-height:176px}.gift-art{width:128px;height:120px}.gift-body{height:76px}.gift-lid{top:23px}.gift-ribbon-v{top:24px}.gift-ribbon-h{top:34px}.gift-bow{--bow-scale:.75}}
+@media(prefers-reduced-motion:reduce){.dream-sky:before,.dream-sky:after,.dream-moon,.dream-halo,.dream-cloud,.dream-comet,.gift-art,.gift-box:after,.gift-body:after,.scorpio-constellation,.scorpio-thread,.scorpio-stars circle,.cake-scene:before{animation:none!important}.dream-comet{display:none}}
