@@ -233,9 +233,9 @@
             <span class="turntable-flower"><i></i></span>
           </div>
         </div>
-        <div class="music-progress" aria-hidden="true"><span id="musicProgress"></span></div>
+        <input class="music-progress" id="musicSeek" type="range" min="0" max="1000" value="0" aria-label="Tua bài hát">
         <div class="music-controls"><button id="musicPlay" class="music-play" type="button">▶ Play</button><button id="musicReplay" class="music-replay" type="button">↺ Replay</button></div>
-        <audio id="giftAudio" preload="auto"></audio>
+        <audio id="giftAudio" loop preload="auto"></audio>
       </div>
     </section>
   </div>
@@ -299,6 +299,7 @@
     const backgroundMusic=$('#backgroundMusic');
     const musicPlay=$('#musicPlay');
     const musicReplay=$('#musicReplay');
+    const musicSeek=$('#musicSeek');
     const dots=[...document.querySelectorAll('#passDots i')];
     const message=$('#lockMessage');
     const trigger=$('#openLetter');
@@ -660,7 +661,7 @@
     $('#giftClose').addEventListener('click',closeGift);
     $('#giftShade').addEventListener('click',closeGift);
 
-    const songUrl='assets/wave-to-earth-love.mp3';
+    const songUrl='assets/taylor-swift-daylight.mp3';
     function createDemoSong(){
       const rate=22050,beat=.42;
       const melody=[523.25,659.25,783.99,659.25,587.33,659.25,523.25,392,440,523.25,659.25,587.33,523.25,440,392,0,523.25,659.25,783.99,880,783.99,659.25,587.33,523.25,440,587.33,523.25,392];
@@ -686,6 +687,29 @@
       return URL.createObjectURL(new Blob([buffer],{type:'audio/wav'}));
     }
     function prepareSong(){if(!giftAudio.getAttribute('src'))giftAudio.src=songUrl||createDemoSong()}
+    let pendingSeekRatio=null;
+    const formatSongTime=seconds=>`${Math.floor(seconds/60)}:${String(Math.floor(seconds%60)).padStart(2,'0')}`;
+    function updateSongProgress(){
+      const duration=Number.isFinite(giftAudio.duration)?giftAudio.duration:0;
+      const ratio=duration?giftAudio.currentTime/duration:0;
+      musicSeek.value=Math.round(ratio*1000);
+      musicSeek.style.setProperty('--seek-progress',`${ratio*100}%`);
+      musicSeek.setAttribute('aria-valuetext',`${formatSongTime(giftAudio.currentTime)} / ${formatSongTime(duration)}`);
+    }
+    musicSeek.addEventListener('input',()=>{
+      const ratio=Number(musicSeek.value)/1000;
+      musicSeek.style.setProperty('--seek-progress',`${ratio*100}%`);
+      prepareSong();
+      if(Number.isFinite(giftAudio.duration)&&giftAudio.duration>0)giftAudio.currentTime=ratio*giftAudio.duration;
+      else pendingSeekRatio=ratio;
+    });
+    giftAudio.addEventListener('loadedmetadata',()=>{
+      if(pendingSeekRatio!==null&&Number.isFinite(giftAudio.duration)){
+        giftAudio.currentTime=pendingSeekRatio*giftAudio.duration;
+        pendingSeekRatio=null;
+      }
+      updateSongProgress();
+    });
     musicPlay.addEventListener('click',()=>{
       prepareSong();
       if(giftAudio.paused){
@@ -695,14 +719,14 @@
     });
     musicReplay.addEventListener('click',()=>{
       prepareSong();
+      pendingSeekRatio=0;
       giftAudio.currentTime=0;
+      updateSongProgress();
       giftAudio.play().catch(()=>{});
     });
     giftAudio.addEventListener('play',()=>{musicView.classList.add('playing');musicPlay.textContent='Ⅱ Pause'});
     giftAudio.addEventListener('pause',()=>{musicView.classList.remove('playing');musicPlay.textContent='▶ Play'});
-    giftAudio.addEventListener('timeupdate',()=>{
-      $('#musicProgress').style.width=giftAudio.duration?`${giftAudio.currentTime/giftAudio.duration*100}%`:'0%';
-    });
+    giftAudio.addEventListener('timeupdate',updateSongProgress);
     function unlock(){
       busy=true;
       playBackgroundMusic(true);
@@ -778,8 +802,11 @@
       envelopeButton.classList.add('opening');
       setTimeout(()=>{
         if(run!==letterRun)return;
+        stopWriting();
+        inkWords.forEach(word=>word.classList.remove('written'));
+        signature.classList.remove('signed');
+        paper.classList.add('writing','from-envelope');
         paper.hidden=false;
-        paper.classList.add('from-envelope');
         envelopeStage.classList.add('revealing');
         paper.scrollTop=0;
         paper.focus({preventScroll:true});
